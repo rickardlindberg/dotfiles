@@ -64,12 +64,12 @@ function! FoldMethodForVimrc()
     setlocal foldmethod=expr
     setlocal foldexpr=getline(v:lnum)=~'^\"\ =\ '?'>1':1
 endfunction
-autocmd BufWritePost ~/.vim/vimrc source ~/.vimrc
+autocmd BufWritePost ~/.vim/* source ~/.vimrc
 autocmd BufReadPost ~/.vim/vimrc call FoldMethodForVimrc()
-autocmd BufWritePost ~/.vim/projects.vim source ~/.vimrc
+autocmd BufReadPost ~/.vim/projects.vim call FoldMethodForVimrc()
 
-if filereadable("projects.vim")
-    source projects.vim
+if filereadable(expand("~/.vim/projects.vim"))
+    source ~/.vim/projects.vim
 endif
 
 " = UI 
