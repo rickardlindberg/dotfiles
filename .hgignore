@@ -1,0 +1,6 @@
+syntax: glob
+
+plugin-command-t-1.0/ruby/command-t/*.o
+plugin-command-t-1.0/ruby/command-t/ext.so
+plugin-command-t-1.0/ruby/command-t/mkmf.log
+plugin-command-t-1.0/ruby/command-t/Makefile
