@@ -60,6 +60,14 @@ autocmd!
 " autocmd BufWritePost ~/proj-foo/* :make
 " autocmd BufReadPost ~/proj-foo/* call SetupCompilerForProjFoo()
 
+function! FoldMethodForVimrc()
+    setlocal foldmethod=expr
+    setlocal foldexpr=getline(v:lnum)=~'^\"\ =\ '?'>1':1
+endfunction
+autocmd BufWritePost ~/.vim/vimrc source ~/.vimrc
+autocmd BufReadPost ~/.vim/vimrc call FoldMethodForVimrc()
+autocmd BufWritePost ~/.vim/projects.vim source ~/.vimrc
+
 if filereadable("projects.vim")
     source projects.vim
 endif
