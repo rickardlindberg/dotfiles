@@ -1,6 +1,6 @@
 syntax: glob
 
-projects-local.vim
+projects.vim
 
 .netrwhist
 

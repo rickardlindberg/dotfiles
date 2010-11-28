@@ -50,7 +50,19 @@ set tags=./tags;~/
 autocmd!
 
 " = Projects
-source ~/.vim/projects.vim
+
+" Examples:
+"
+" function! SetupCompilerForProjFoo()
+"     compiler pyunit
+"     setlocal makeprg=python\ ~/proj-foo/tests/run.py
+" endfunction
+" autocmd BufWritePost ~/proj-foo/* :make
+" autocmd BufReadPost ~/proj-foo/* call SetupCompilerForProjFoo()
+
+if filereadable("projects.vim")
+    source projects.vim
+endif
 
 " = UI 
 syntax enable
