@@ -5,3 +5,7 @@
 " endfunction
 " autocmd BufWritePost ~/proj-foo/* :make
 " autocmd BufReadPost ~/proj-foo/* call SetupCompilerForProjFoo()
+
+if filereadable("projects-local.vim")
+    source projects-local.vim
+endif
