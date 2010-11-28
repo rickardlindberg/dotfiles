@@ -1,3 +1,7 @@
+# Getting
+
+    hg clone http://bitbucket.org/rickardlindberg/vimrc
+
 # Installing .vimrc
 
     ln -s ~/.vim/vimrc ~/.vimrc
