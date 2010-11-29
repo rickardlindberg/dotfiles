@@ -72,10 +72,6 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 autocmd BufReadPost ~/.vim/vimrc call FoldMethodForVimrc()
 autocmd BufReadPost ~/.vim/projects.vim call FoldMethodForVimrc()
 
-if filereadable(expand("~/.vim/projects.vim"))
-    source ~/.vim/projects.vim
-endif
-
 " = UI 
 syntax enable
 colorscheme murphy
@@ -92,7 +88,7 @@ if has("gui_running")
     colorscheme candycode
 endif
 
-" = Local
+" = Local settings
 
 if filereadable(expand("~/.vim/local.vim"))
     source ~/.vim/local.vim
