@@ -7,6 +7,9 @@ set runtimepath+=~/.vim/plugin-snipmate-0.83
 set runtimepath+=~/.vim/plugin-snipmate-0.83/after
 let g:snippets_dir="~/.vim/snippets"
 
+" = Plugin: vcscommand
+set runtimepath+=~/.vim/plugin-vcscommand-1.99.42
+
 " = Wildcard
 set wildignore=*.pyc
 
