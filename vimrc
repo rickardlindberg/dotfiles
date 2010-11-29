@@ -53,10 +53,7 @@ set tags=./tags;~/
 " = Autocommand clear 
 autocmd!
 
-" = Projects
-
-" Examples:
-"
+" = Project: Example
 " function! SetupCompilerForProjFoo()
 "     compiler pyunit
 "     setlocal makeprg=python\ ~/proj-foo/tests/run.py
@@ -64,13 +61,14 @@ autocmd!
 " autocmd BufWritePost ~/proj-foo/* :make
 " autocmd BufReadPost ~/proj-foo/* call SetupCompilerForProjFoo()
 
+" = Project: vimrc
 function! FoldMethodForVimrc()
     setlocal foldmethod=expr
     setlocal foldexpr=getline(v:lnum)=~'^\"\ =\ '?'>1':1
 endfunction
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
 autocmd BufReadPost ~/.vim/vimrc call FoldMethodForVimrc()
-autocmd BufReadPost ~/.vim/projects.vim call FoldMethodForVimrc()
+autocmd BufReadPost ~/.vim/local.vim call FoldMethodForVimrc()
 
 " = UI 
 syntax enable
@@ -89,7 +87,6 @@ if has("gui_running")
 endif
 
 " = Local settings
-
 if filereadable(expand("~/.vim/local.vim"))
     source ~/.vim/local.vim
 endif
