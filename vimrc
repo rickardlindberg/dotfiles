@@ -87,3 +87,9 @@ if has("gui_running")
     set guioptions-=L
     colorscheme candycode
 endif
+
+" = Local
+
+if filereadable(expand("~/.vim/local.vim"))
+    source ~/.vim/local.vim
+endif
