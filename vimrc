@@ -44,7 +44,7 @@ map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
 nmap <S-Space> <C-b>
-map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " = Tags 
 " Search for tags file upwards until home dir
