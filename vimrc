@@ -11,6 +11,11 @@ let g:snippets_dir="~/.vim/snippets"
 " = Plugin: vcscommand
 set runtimepath+=~/.vim/plugin-vcscommand-1.99.42
 
+" = Completion
+set nowildmenu
+set wildmode=list:longest,full
+set completeopt=longest,menu,preview
+
 " = Wildcard
 set wildignore=*.pyc
 
