@@ -1,7 +1,13 @@
+snippet log
+	logger.debug("RL: ${1}"${2});
+snippet m
+	${1:name}: function(${2}) {
+		${3}
+	},
 # Prototype
 snippet proto
-	${1:class_name}.prototype.${2:method_name} = function(${3:first_argument}) {
-		${4:// body...}
+	${1:class_name}.prototype.${2:method_name} = function(${3}) {
+		${4}
 	};
 # Function
 snippet fun
