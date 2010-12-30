@@ -19,6 +19,9 @@ set completeopt=longest,menu,preview
 " = Wildcard
 set wildignore=*.pyc
 
+" = Grep
+set grepprg=ack
+
 " = Filetype autodetection
 filetype plugin indent on
 
@@ -45,11 +48,19 @@ set textwidth=79
 set scrolloff=3
 
 " = Mappings 
+map <F2> :cn<CR>
 map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
 nmap <S-Space> <C-b>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+
+if &diff
+    map <C-q> :qall<CR>
+    map <Up> [c
+    map <Down> ]c
+    map <Right> :diffget<CR>
+endif
 
 " = Tags 
 " Search for tags file upwards until home dir
