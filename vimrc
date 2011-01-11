@@ -54,6 +54,7 @@ map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
 nmap <S-Space> <C-b>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+noremap <C-]> :tj <C-r><C-w><CR>
 
 if &diff
     map <C-q> :qall<CR>
