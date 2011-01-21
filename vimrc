@@ -70,6 +70,9 @@ set tags=./tags;~/
 " = Autocommand clear 
 autocmd!
 
+" = No spell in cwindow
+autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif 
+
 " = Project: Example
 " function! SetupCompilerForProjFoo()
 "     compiler pyunit
