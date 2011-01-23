@@ -66,10 +66,6 @@ if &diff
     map <Right> :diffget<CR>
 endif
 
-" = Tags 
-" Search for tags file upwards until home dir
-set tags=./tags;~/
-
 " = Autocommand clear 
 autocmd!
 
