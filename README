@@ -6,12 +6,6 @@
 
     ln -s ~/.vim/vimrc ~/.vimrc
 
-# Installing command-t
-
-    cd ~/.vim/plugin-command-t-1.0/ruby/command-t
-    ruby extconf.rb
-    make
-
 # Installing a plugin
 
     :helptags ~/.vim/plugin-foo/doc

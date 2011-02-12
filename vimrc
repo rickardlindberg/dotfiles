@@ -1,8 +1,3 @@
-" = Plugin: Command-T
-set runtimepath+=~/.vim/plugin-command-t-1.0
-let g:CommandTMaxFiles=15000
-let g:CommandTMaxHeight=10
-
 " = Plugin: SnipMate
 set runtimepath+=~/.vim/plugin-snipmate-0.83
 set runtimepath+=~/.vim/plugin-snipmate-0.83/after
