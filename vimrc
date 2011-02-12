@@ -9,36 +9,32 @@ set runtimepath+=~/.vim/plugin-vcscommand-1.99.42
 " = Plugin: bufkill
 set runtimepath+=~/.vim/plugin-bufkill-1.9
 
-" = Completion
-set nowildmenu
-set wildmode=list:longest,full
-set completeopt=longest,menu,preview
-
-" = Wildcard
-set wildignore=*.pyc
-
-" = Grep
-set grepprg=ack
-
 " = Filetype autodetection
 filetype plugin indent on
 
-" = Spell checking
-set spell
-
-" = Search options 
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-
-" = Tab settings 
+" = Tab
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" = Indent option
+" = Search
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set grepprg=ack
+
+" = Completion
+set nowildmenu
+set wildmode=list:longest,full
+set completeopt=longest,menu,preview
+set wildignore=*.pyc
+
+" = Spell checking
+set spell
+
+" = Indent
 set smartindent
 
 " = Text display options
@@ -51,8 +47,12 @@ map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
 nmap <S-Space> <C-b>
-map <Leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <C-]> :tj <C-r><C-w><CR>
+
+map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
+map <Leader>fpc ?^class
+map <Leader>sp :grep --python ""<Left>
+map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .<CR>
 
 if &diff
     map <C-q> :qall<CR>
@@ -66,14 +66,6 @@ autocmd!
 
 " = No spell in cwindow
 autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif 
-
-" = Project: Example
-" function! SetupCompilerForProjFoo()
-"     compiler pyunit
-"     setlocal makeprg=python\ ~/proj-foo/tests/run.py
-" endfunction
-" autocmd BufWritePost ~/proj-foo/* :make
-" autocmd BufReadPost ~/proj-foo/* call SetupCompilerForProjFoo()
 
 " = Project: vimrc
 function! FoldMethodForVimrc()
