@@ -49,6 +49,7 @@ nmap <Space> <C-f>
 nmap <S-Space> <C-b>
 noremap <C-]> :tj <C-r><C-w><CR>
 
+map <Leader>sip vip:!sort<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>fpc ?^class
 map <Leader>sp :grep --python ""<Left>
