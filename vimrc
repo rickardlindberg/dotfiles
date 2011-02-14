@@ -52,6 +52,7 @@ noremap <C-]> :tj <C-r><C-w><CR>
 map <Leader>sip vip:!sort<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>fpc ?^class
+map <Leader>sj :grep --js ""<Left>
 map <Leader>sp :grep --python ""<Left>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .<CR>
 
