@@ -41,8 +41,17 @@ set smartindent
 set textwidth=79
 set scrolloff=3
 
+" = Function: GoToPrevEditedFile
+function! GoToPrevEditedFile()
+    let currentFile = expand("%")
+    while currentFile == expand("%")
+        execute "normal \<c-o>"
+    endwhile
+endfunction
+
 " = Mappings 
 map <F2> :cn<CR>
+map <F7> :call GoToPrevEditedFile()<CR>
 map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
