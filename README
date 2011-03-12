@@ -2,10 +2,11 @@
 
     git clone git://github.com/rickardlindberg/dotfiles.git
 
-# Installing .vimrc
+# Installing
 
-    ln -s ~/.vim/vimrc ~/.vimrc
+    ln -s .vimrc ~/.vimrc
+    ln -s .vim ~/.vim
 
-# Installing a plugin
+# Installing a Vim plugin
 
     :helptags ~/.vim/plugin-foo/doc
