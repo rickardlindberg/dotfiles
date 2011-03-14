@@ -6,9 +6,6 @@ let g:snippets_dir="~/.vim/snippets"
 " = Plugin: vcscommand
 set runtimepath+=~/.vim/plugin-vcscommand-1.99.42
 
-" = Plugin: bufkill
-set runtimepath+=~/.vim/plugin-bufkill-1.9
-
 " = Filetype autodetection
 filetype plugin indent on
 
