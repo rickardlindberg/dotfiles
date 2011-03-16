@@ -6,6 +6,7 @@
 
     ln -s .vimrc ~/.vimrc
     ln -s .vim ~/.vim
+    ln -s .xmonad/xmonad.hs ~/.xmonad/xmonad.hs
 
 # Installing a Vim plugin
 
