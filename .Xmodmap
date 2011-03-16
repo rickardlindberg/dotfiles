@@ -1,0 +1,11 @@
+! setup mode switch on Alt_GR
+keysym Alt_R = Mode_switch
+
+! remap [ ' ; to å ä ö
+keycode 34 = bracketleft braceleft aring Aring aring Aring
+keycode 48 = apostrophe quotedbl adiaeresis Adiaeresis adiaeresis Adiaeresis
+keycode 47 = semicolon colon odiaeresis Odiaeresis odiaeresis Odiaeresis
+
+! make caps lock behave as ctrl
+remove Lock = Caps_Lock
+add Control = Caps_Lock
