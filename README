@@ -4,10 +4,10 @@
 
 # Installing
 
-    ln -s .vimrc ~/.vimrc
-    ln -s .vim ~/.vim
-    ln -s .xmonad/xmonad.hs ~/.xmonad/xmonad.hs
-    ln -s .Xmodmap ~/.Xmodmap
+    ln -s ~/dotfiles/.vimrc ~/.vimrc
+    ln -s ~/dotfiles/.vim ~/.vim
+    ln -s ~/dotfiles/.xmonad/xmonad.hs ~/.xmonad/xmonad.hs
+    ln -s ~/dotfiles/.Xmodmap ~/.Xmodmap
 
 # Installing a Vim plugin
 
