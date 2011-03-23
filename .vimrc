@@ -1,10 +1,6 @@
-" = Plugin: SnipMate
-set runtimepath+=~/.vim/plugin-snipmate-0.83
-set runtimepath+=~/.vim/plugin-snipmate-0.83/after
+" = Plugin configuration
+call pathogen#runtime_append_all_bundles("plugins")
 let g:snippets_dir="~/.vim/snippets"
-
-" = Plugin: vcscommand
-set runtimepath+=~/.vim/plugin-vcscommand-1.99.42
 
 " = Filetype autodetection
 filetype plugin indent on
