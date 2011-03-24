@@ -22,6 +22,7 @@ myManageHook = composeAll
     [ resource  =? "Do"      --> doIgnore
     , className =? "Kompare" --> doFullFloat
     , className =? "Hgk"     --> doFullFloat
+    , className =? "Gitk"    --> doFullFloat
     ]
 
 myKeys (XConfig {modMask = modm}) = M.fromList $
