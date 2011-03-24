@@ -78,8 +78,9 @@ function! FoldMethodForVimrc()
     setlocal foldmethod=expr
     setlocal foldexpr=getline(v:lnum)=~'^\"\ =\ '?'>1':1
 endfunction
+autocmd BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
-autocmd BufReadPost ~/.vim/vimrc call FoldMethodForVimrc()
+autocmd BufReadPost ~/.vimrc call FoldMethodForVimrc()
 autocmd BufReadPost ~/.vim/local.vim call FoldMethodForVimrc()
 
 " = UI 
