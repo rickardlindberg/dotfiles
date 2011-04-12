@@ -12,8 +12,7 @@ set softtabstop=4
 set expandtab
 
 " = Search
-set ignorecase
-set smartcase
+set noignorecase
 set hlsearch
 set incsearch
 set grepprg=ack
