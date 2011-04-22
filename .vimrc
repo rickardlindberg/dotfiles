@@ -59,6 +59,7 @@ map <Leader>fpc ?^class
 map <Leader>sj :grep --js ""<Left>
 map <Leader>sp :grep --python ""<Left>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .<CR>
+map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc
 
 if &diff
     map <C-q> :qall<CR>
