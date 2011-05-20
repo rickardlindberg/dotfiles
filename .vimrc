@@ -42,6 +42,31 @@ function! GoToPrevEditedFile()
     endwhile
 endfunction
 
+" = Refactorings
+
+function! ExtractJsTestMethod() range
+    let name = inputdialog("Name: ")
+    let test_case_name = expand("%:t:r")
+    execute a:firstline . "," . a:lastline . "d r"
+    execute "normal Othis." . name . "();"
+    execute "normal /^};$\<CR>"
+    execute "normal o"
+    execute "normal o" . test_case_name . ".prototype." . name . " = function () {"
+    execute "normal o};"
+    execute "normal \"rP"
+endfunction
+
+function! ExtractJsMethod() range
+    let name = inputdialog("Name: ")
+    execute a:firstline . "," . a:lastline . "d r"
+    execute "normal Othis." . name . "();"
+    execute "normal /  },$\<CR>"
+    execute "normal o"
+    execute "normal o" . name . ": function () {"
+    execute "normal o},"
+    execute "normal \"rP"
+endfunction
+
 " = Mappings 
 map <F2> :cn<CR>
 map <F7> :call GoToPrevEditedFile()<CR>
@@ -71,6 +96,12 @@ endif
 
 " = Autocommand clear 
 autocmd!
+
+" = Refactoring mapping
+autocmd BufEnter *.js
+    \ vmap <buffer> <Leader>em :call ExtractJsMethod()<CR>
+autocmd BufEnter **/test-js/**/*.js
+    \ vmap <buffer> <Leader>em :call ExtractJsTestMethod()<CR>
 
 " = No spell in cwindow
 autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif 
