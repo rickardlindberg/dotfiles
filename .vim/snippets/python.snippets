@@ -5,23 +5,15 @@ snippet i
 snippet r
 	return ${1}
 snippet w
-	while ${1:condition}:
-		${2:# code...}
+	while ${1:condition}:${2}
 snippet f
-	for ${1:needle} in ${2:haystack}:
-		${3:# code...}
+	for ${1:needle} in ${2:haystack}:${3}
 # New Class
 snippet c
-	class ${1:ClassName}(${2:object}):
-	
-		${3:pass}
+	class ${1:ClassName}(${2:object}):${3}
 # New Function
 snippet d
-	def ${1:name}(`indent('.') ? 'self' : ''`):
-		${2:pass}
-snippet ds
-	def ${1:name}(`indent('.') ? 'self, ' : ''`${2}):
-		${3:pass}
+	def ${1:name}(`indent('.') ? 'self' : ''`${2}):${3}
 # Lambda
 snippet ld
 	${1:var} = lambda ${2:vars} : ${3:action}
@@ -56,7 +48,7 @@ snippet try Try/Except/Else/Finally
 	finally:
 		${6:pass}
 snippet ifmain
-	if __name__ == '__main__':
+	if __name__ == "__main__":
 		${1:main()}
 snippet _
 	__${1:init}__${2}
