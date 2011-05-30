@@ -12,6 +12,7 @@ import XMonad.Layout.Reflect
 import XMonad.ManageHook
 import XMonad.Config.Gnome
 import System.Exit
+import XMonad.Layout.Circle
 
 import qualified Data.Map as M
 
@@ -30,7 +31,7 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_m), sendMessage ToggleLayout)
     ]
 
-myLayoutHook = avoidStruts (smartBorders (toggleLayouts Full (tiled ||| Mirror tiled)))
+myLayoutHook = avoidStruts (smartBorders (toggleLayouts Full (Circle ||| tiled ||| Mirror tiled)))
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
