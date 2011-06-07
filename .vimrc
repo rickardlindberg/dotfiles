@@ -46,23 +46,31 @@ endfunction
 
 function! ExtractJsTestMethod() range
     let name = inputdialog("Name: ")
+    if name == ""
+        return
+    endif
+    let params = inputdialog("Parameters: ")
     let test_case_name = expand("%:t:r")
     execute a:firstline . "," . a:lastline . "d r"
-    execute "normal Othis." . name . "();"
+    execute "normal Othis." . name . "(" . params . ");"
     execute "normal /^};$\<CR>"
     execute "normal o"
-    execute "normal o" . test_case_name . ".prototype." . name . " = function () {"
+    execute "normal o" . test_case_name . ".prototype." . name . " = function (" . params . ") {"
     execute "normal o};"
     execute "normal \"rP"
 endfunction
 
 function! ExtractJsMethod() range
     let name = inputdialog("Name: ")
+    if name == ""
+        return
+    endif
+    let params = inputdialog("Parameters: ")
     execute a:firstline . "," . a:lastline . "d r"
-    execute "normal Othis." . name . "();"
+    execute "normal Othis." . name . "(" . params . ");"
     execute "normal /  },$\<CR>"
     execute "normal o"
-    execute "normal o" . name . ": function () {"
+    execute "normal o" . name . ": function (" . params . ") {"
     execute "normal o},"
     execute "normal \"rP"
 endfunction
