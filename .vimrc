@@ -76,6 +76,9 @@ function! ExtractJsMethod() range
 endfunction
 
 " = Mappings 
+
+let mapleader = ","
+
 map <F2> :cn<CR>
 map <F7> :call GoToPrevEditedFile()<CR>
 map <F11> :set syntax=mail<CR>
