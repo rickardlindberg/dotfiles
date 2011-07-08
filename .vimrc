@@ -88,6 +88,7 @@ nmap <S-Space> <C-b>
 noremap <C-]> :tj <C-r><C-w><CR>
 
 map <Leader><Leader> <C-^>
+map <Leader>ff :FufFile<CR>
 map <Leader>ft :FufTag<CR>
 map <Leader>fb :FufBuffer<CR>
 map <Leader>sip vip:!sort<CR>
