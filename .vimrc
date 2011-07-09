@@ -33,6 +33,7 @@ set smartindent
 " = Text display options
 set textwidth=79
 set scrolloff=3
+set winwidth=80
 
 " = Function: GoToPrevEditedFile
 function! GoToPrevEditedFile()
