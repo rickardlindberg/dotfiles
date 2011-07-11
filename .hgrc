@@ -1,0 +1,14 @@
+[ui]
+username = Rickard Lindberg <ricli85@gmail.com>
+ignore = ~/.hgignore
+
+[extensions]
+hgext.extdiff =
+rebase =
+mq =
+purge =
+convert =
+eol =
+
+[extdiff]
+cmd.vdiff = kompare
