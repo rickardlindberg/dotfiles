@@ -4,6 +4,7 @@ import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Layout
+import XMonad.Layout.ResizeScreen
 import XMonad.Layout.ToggleLayouts
 import XMonad.Layout.Maximize
 import XMonad.Layout.IM
@@ -31,6 +32,7 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_m), sendMessage ToggleLayout)
     ]
 
+--myLayoutHook = withNewRectangle (Rectangle 0 0 1280 720) (noBorders Full)
 myLayoutHook = avoidStruts (smartBorders (toggleLayouts Full (Circle ||| tiled ||| Mirror tiled)))
     where
         tiled = Tall nmaster delta ratio
