@@ -162,6 +162,10 @@ syntax match   javaScriptParensErrA     contained "\]"
 syntax match   javaScriptParensErrB     contained ")"
 syntax match   javaScriptParensErrC     contained "}"
 
+"" Highlight test case names written using prototype syntax
+syntax match Ignore "^.*\.prototype\."
+syntax match Comment "test[A-Z].*="
+
 if main_syntax == "javascript"
   syntax sync clear
   syntax sync ccomment javaScriptComment minlines=200
