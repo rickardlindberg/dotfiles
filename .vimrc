@@ -98,7 +98,7 @@ map <Leader>fpc ?^class
 map <Leader>sj :grep --js ""<Left>
 map <Leader>smc :grep --js "\.<C-R><C-W>\("<CR>
 map <Leader>sp :grep --python ""<Left>
-map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .<CR>
+map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>cfp :let @+=expand("%:.")<CR>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
