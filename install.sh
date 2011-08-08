@@ -45,8 +45,9 @@ remove_non_dotfiles() {
 }
 
 treat_direcotry_as_single() {
-    grep -v '^\(\.vim/.\)'
+    grep -v '^\(\.vim/.\)' | grep -v '^\(\.bashrc_files/.\)'
     echo '.vim'
+    echo '.bashrc_files'
 }
 
 execute() {
