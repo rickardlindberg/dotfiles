@@ -8,3 +8,4 @@ fi
 
 . ~/.bashrc_files/hg.sh
 . ~/.bashrc_files/diff.sh
+. ~/.bashrc_files/prompt.sh
