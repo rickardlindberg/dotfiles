@@ -11,16 +11,16 @@ _svn_prompt() {
 }
 
 _add_colors_to_ps1() {
-    for color in {1..50}; do
-        export PS1="$PS1\n$(_in_color $color "this is color $color")"
+    for color in {1..100}; do
+        export PS1="$PS1\n[$(_in_color $color "color $color")]"
     done
 }
 
 export PS1=""
 export PS1="$PS1\n"
-export PS1="$PS1$(_in_color 36 '\u@\h') "
+export PS1="$PS1$(_in_color 96 '\u@\h') "
 export PS1="$PS1$(_in_color 37 '$(date "+%H:%M")') "
-export PS1="$PS1$(_in_color 33 '\w')"
-export PS1="$PS1$(_in_color 31 '$(_svn_prompt)')"
+export PS1="$PS1$(_in_color 93 '\w')"
+export PS1="$PS1$(_in_color 91 '$(_svn_prompt)')"
 export PS1="$PS1\n"
-export PS1="$PS1$ "
+export PS1="$PS1\$ "
