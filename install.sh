@@ -28,7 +28,7 @@ create_directories() {
 
 create_links() {
     for dotfile in $(list_dotfiles); do
-        execute ln -s -T $(pwd)/$dotfile ~/$dotfile
+        execute ln -s $(pwd)/$dotfile ~/$dotfile
     done
 }
 
