@@ -6,6 +6,7 @@ if [ -f ~/.bashrc_files/local.sh ]; then
     . ~/.bashrc_files/local.sh
 fi
 
+. ~/.bashrc_files/aliases.sh
 . ~/.bashrc_files/hg.sh
 . ~/.bashrc_files/diff.sh
 . ~/.bashrc_files/prompt.sh
