@@ -76,6 +76,20 @@ function! ExtractJsMethod() range
     execute "normal \"rP"
 endfunction
 
+" = Custom navigation
+
+function! GoToNextOuterIndent()
+    let currentLine = line(".")
+    let originalIndent = indent(currentLine)
+    while (currentLine > 0)
+        if (indent(currentLine) < originalIndent && getline(currentLine) != "")
+            execute "normal " . currentLine . "G"
+            return
+        endif
+        let currentLine = currentLine - 1
+    endwhile
+endfunction
+
 " = Mappings 
 
 let mapleader = ","
@@ -102,6 +116,7 @@ map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>cfp :let @+=expand("%:.")<CR>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
+map <Leader>< :call GoToNextOuterIndent()<CR>
 
 if &diff
     map <C-q> :qall<CR>
