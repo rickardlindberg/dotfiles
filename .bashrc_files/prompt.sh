@@ -18,9 +18,9 @@ _add_colors_to_ps1() {
 
 export PS1=""
 export PS1="$PS1\n"
-export PS1="$PS1$(_in_color 96 '\u@\h')"
+export PS1="$PS1$(_in_color 34 '\u@\h')"
 export PS1="$PS1$(_in_color 37 ' | ')"
-export PS1="$PS1$(_in_color 93 '\w')"
-export PS1="$PS1$(_in_color 91 ' $(_svn_prompt)')"
+export PS1="$PS1$(_in_color 33 '\w')"
+export PS1="$PS1$(_in_color 31 ' $(_svn_prompt)')"
 export PS1="$PS1\n"
 export PS1="$PS1\$ "
