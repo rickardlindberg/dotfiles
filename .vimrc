@@ -152,7 +152,9 @@ autocmd BufReadPost ~/.vim/local.vim call FoldMethodForVimrc()
 
 " = UI 
 syntax enable
-colorscheme default
+set background=dark
+let g:solarized_termtrans = 1
+colorscheme solarized
 set laststatus=2      " Always show status line for a window
 
 if has("gui_running")
