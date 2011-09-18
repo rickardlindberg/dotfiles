@@ -8,6 +8,5 @@ fi
 
 . ~/.bashrc_files/aliases.sh
 . ~/.bashrc_files/hg.sh
-. ~/.bashrc_files/diff.sh
 . ~/.bashrc_files/prompt.sh
 . ~/.bashrc_files/vcs.sh
