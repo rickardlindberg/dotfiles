@@ -12,6 +12,14 @@ d() {
     fi | vi -
 }
 
+c() {
+    if _is_inside_git_repo; then
+        git commit "$@"
+    elif _is_inside_hg_repo; then
+        hg commit "$@"
+    fi
+}
+
 _is_inside_git_repo() {
     git status > /dev/null 2>&1
 }
