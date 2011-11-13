@@ -21,7 +21,7 @@ set grepprg=ack
 set nowildmenu
 set wildmode=list:longest,full
 set completeopt=longest,menu,preview
-set wildignore=*.pyc
+set wildignore=*.pyc,*.o,*.hi
 set pumheight=20
 
 " = Spell checking
