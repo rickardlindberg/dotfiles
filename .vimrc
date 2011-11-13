@@ -151,6 +151,13 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 autocmd BufReadPost ~/.vimrc call FoldMethodForVimrc()
 autocmd BufReadPost ~/.vim/local.vim call FoldMethodForVimrc()
 
+" = Python folding
+function! PythonCommentFold()
+    setlocal foldmethod=expr
+    setlocal foldexpr=getline(v:lnum)=~'^\ *#'?'1':0
+endfunction
+autocmd BufReadPost *.py call PythonCommentFold()
+
 " = UI 
 syntax enable
 set background=dark
