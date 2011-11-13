@@ -41,7 +41,7 @@ files_in_repo() {
 }
 
 remove_non_dotfiles() {
-    grep -v '^\(install.sh\|\.gitignore\)'
+    grep -v '^\(install.sh\|\.gitignore\)$'
 }
 
 treat_direcotry_as_single() {
