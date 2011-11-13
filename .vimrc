@@ -117,6 +117,7 @@ map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>cfp :let @+=expand("%:.")<CR>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
 map <Leader>< :call GoToNextOuterIndent()<CR>
+map <F5> :tj <C-r><C-w><CR>
 
 if &diff
     map <C-q> :qall<CR>
