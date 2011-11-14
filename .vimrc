@@ -90,7 +90,7 @@ function! GoToNextOuterIndent()
     endwhile
 endfunction
 
-" = Mappings 
+" = Mappings
 
 let mapleader = ","
 
@@ -126,7 +126,7 @@ if &diff
     map <Right> :diffget<CR>
 endif
 
-" = Autocommand clear 
+" = Autocommand clear
 autocmd!
 
 " = Refactoring mapping
@@ -136,7 +136,7 @@ autocmd BufEnter **/test-js/**/*.js
     \ vmap <buffer> <Leader>em :call ExtractJsTestMethod()<CR>
 
 " = No spell in cwindow
-autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif 
+autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif
 
 " = No spell in diff files
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'diff' | setlocal nospell | endif
