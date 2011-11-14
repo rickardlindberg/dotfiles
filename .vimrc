@@ -141,6 +141,9 @@ autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif
 " = No spell in diff files
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'diff' | setlocal nospell | endif
 
+" = No spell in haskell files
+autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlocal nospell | endif
+
 " = Project: vimrc
 function! FoldMethodForVimrc()
     setlocal foldmethod=expr
