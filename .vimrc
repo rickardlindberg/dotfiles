@@ -163,10 +163,14 @@ autocmd BufReadPost *.py call PythonCommentFold()
 
 " = UI 
 syntax enable
-set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized
 set laststatus=2      " Always show status line for a window
+
+" Highlight extra whitespace
+highlight ExtraWhiteSpace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhiteSpace guibg=red
+au BufEnter * match ExtraWhiteSpace /\s\+$/
+au InsertEnter * match ExtraWhiteSpace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 if has("gui_running")
     set guioptions-=T " Hide toolbar
@@ -177,6 +181,10 @@ if has("gui_running")
     set guioptions-=l " Hide left scroll bar
     set guioptions-=L
     colorscheme candycode
+else
+    set background=dark
+    let g:solarized_termtrans = 1
+    colorscheme solarized
 endif
 
 " = Local settings
