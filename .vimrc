@@ -121,14 +121,8 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'diff' | setlocal
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlocal nospell | endif
 
 " = Project: vimrc
-function! FoldMethodForVimrc()
-    setlocal foldmethod=expr
-    setlocal foldexpr=getline(v:lnum)=~'^\"\ =\ '?'>1':1
-endfunction
 autocmd BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
-autocmd BufReadPost ~/.vimrc call FoldMethodForVimrc()
-autocmd BufReadPost ~/.vim/local.vim call FoldMethodForVimrc()
 
 " = Python folding
 function! PythonCommentFold()
