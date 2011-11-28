@@ -44,7 +44,6 @@ function! GoToPrevEditedFile()
 endfunction
 
 " = Refactorings
-
 function! ExtractJsTestMethod() range
     let name = inputdialog("Name: ")
     if name == ""
@@ -76,22 +75,7 @@ function! ExtractJsMethod() range
     execute "normal \"rP"
 endfunction
 
-" = Custom navigation
-
-function! GoToNextOuterIndent()
-    let currentLine = line(".")
-    let originalIndent = indent(currentLine)
-    while (currentLine > 0)
-        if (indent(currentLine) < originalIndent && getline(currentLine) != "")
-            execute "normal " . currentLine . "G"
-            return
-        endif
-        let currentLine = currentLine - 1
-    endwhile
-endfunction
-
 " = Mappings
-
 let mapleader = ","
 
 map <F2> :cn<CR>
@@ -103,20 +87,12 @@ nmap <S-Space> <C-b>
 noremap <C-]> :tj <C-r><C-w><CR>
 
 map <Leader><Leader> <C-^>
-map <Leader>ff :FufFile<CR>
-map <Leader>ft :FufTag<CR>
 map <Leader>fb :FufBuffer<CR>
 map <Leader>sip vip:!sort<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
-map <Leader>fpc ?^class
-map <Leader>sj :grep --js ""<Left>
-map <Leader>smc :grep --js "\.<C-R><C-W>\("<CR>
-map <Leader>sp :grep --python ""<Left>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
-map <Leader>cfp :let @+=expand("%:.")<CR>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
-map <Leader>< :call GoToNextOuterIndent()<CR>
 map <F5> :tj <C-r><C-w><CR>
 
 if &diff
@@ -161,7 +137,7 @@ function! PythonCommentFold()
 endfunction
 autocmd BufReadPost *.py call PythonCommentFold()
 
-" = UI 
+" = UI
 syntax enable
 set laststatus=2      " Always show status line for a window
 
