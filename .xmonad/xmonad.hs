@@ -33,12 +33,14 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     ]
 
 --myLayoutHook = withNewRectangle (Rectangle 0 0 1280 720) (noBorders Full)
-myLayoutHook = avoidStruts (smartBorders (toggleLayouts Full (Circle ||| tiled ||| Mirror tiled)))
+myLayoutHook = avoidStruts $ smartBorders $ toggleLayouts Full $ Circle ||| tiled ||| Mirror tiled
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
         ratio = 6/10
         delta = 3/100
+        d = 20
+        shrink = resizeHorizontal d . resizeHorizontalRight d . resizeVertical d . resizeVerticalBottom d
 
 main = xmonad gnomeConfig {
     manageHook         = manageHook gnomeConfig <+> myManageHook,
