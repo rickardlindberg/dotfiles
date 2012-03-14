@@ -93,6 +93,8 @@ map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
+map <Leader>b :bd<CR>
+map <Leader>sh V:!sh<CR>
 map <F5> :tj <C-r><C-w><CR>
 
 if &diff
