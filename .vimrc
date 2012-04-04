@@ -95,6 +95,7 @@ map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
 map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
+map <Leader>qq :qall!<CR>
 map <F5> :tj <C-r><C-w><CR>
 
 if &diff
