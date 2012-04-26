@@ -1,19 +1,21 @@
+import System.Exit
 import XMonad
 import XMonad.Actions.SpawnOn
-import XMonad.Hooks.ManageHelpers
+import XMonad.Config.Gnome
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.NoBorders
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout
-import XMonad.Layout.ResizeScreen
-import XMonad.Layout.ToggleLayouts
-import XMonad.Layout.Maximize
+import XMonad.Layout.Circle
 import XMonad.Layout.IM
+import XMonad.Layout.Maximize
+import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect
+import XMonad.Layout.ResizeScreen
+import XMonad.Layout.ToggleLayouts
 import XMonad.ManageHook
-import XMonad.Config.Gnome
-import System.Exit
-import XMonad.Layout.Circle
+import XMonad.Util.Run
 
 import qualified Data.Map as M
 
@@ -30,10 +32,11 @@ myManageHook = composeAll
 myKeys (XConfig {modMask = modm}) = M.fromList $
     [ ((modm,               xK_p), spawn "gnome-do")
     , ((modm .|. shiftMask, xK_m), sendMessage ToggleLayout)
+    , ((modm,               xK_b), sendMessage ToggleStruts)
     ]
 
 --myLayoutHook = withNewRectangle (Rectangle 0 0 1280 720) (noBorders Full)
-myLayoutHook = avoidStruts $ smartBorders $ toggleLayouts Full $ Circle ||| tiled ||| Mirror tiled
+myLayoutHook = smartBorders $ toggleLayouts Full (avoidStruts (tiled ||| Mirror tiled))
     where
         tiled = Tall nmaster delta ratio
         nmaster = 1
@@ -42,11 +45,28 @@ myLayoutHook = avoidStruts $ smartBorders $ toggleLayouts Full $ Circle ||| tile
         d = 20
         shrink = resizeHorizontal d . resizeHorizontalRight d . resizeVertical d . resizeVerticalBottom d
 
-main = xmonad gnomeConfig {
-    manageHook         = manageHook gnomeConfig <+> myManageHook,
-    layoutHook         = myLayoutHook,
-    keys               = \c -> myKeys c `M.union` keys gnomeConfig c,
-    workspaces         = myWorkSpaces,
-    borderWidth        = 2,
-    focusedBorderColor = "#f36f6f"
-}
+main = do
+    pipe <- spawnPipe "dzen2 -w 500 -ta l -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
+    conky <- spawnPipe "conky -c ~/.xmonad/conkyrc | dzen2 -x 500 -ta r -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
+    --safeSpawn "stalonetray" ["-d", "all", "-p", "-t"]
+    xmonad defaultConfig {
+        logHook            = dynamicLogWithPP $ dzenStuff pipe,
+        manageHook         = manageDocks <+> myManageHook <+> manageHook defaultConfig,
+        --handleEventHook    = docksEventHook <+> handleEventHook defaultConfig,
+        layoutHook         = myLayoutHook,
+        keys               = \c -> myKeys c `M.union` keys defaultConfig c,
+        workspaces         = myWorkSpaces,
+        borderWidth        = 2,
+        focusedBorderColor = "#3399ff"
+    }
+
+dzenStuff pipe = dzenPP
+    { ppOutput          = hPutStrLn pipe
+    , ppCurrent         = dzenColor "#3399ff" "" . wrap " " ""
+    , ppHidden          = dzenColor "#dddddd" "" . wrap " " ""
+    , ppHiddenNoWindows = dzenColor "#777777" "" . wrap " " ""
+    , ppUrgent          = dzenColor "#ff0000" "" . wrap " " ""
+    , ppSep             = " | "
+    , ppLayout          = const ""
+    , ppTitle           = dzenColor "#ffffff" "" . dzenEscape
+    }
