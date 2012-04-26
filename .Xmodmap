@@ -8,4 +8,5 @@ keycode 47 = semicolon colon odiaeresis Odiaeresis odiaeresis Odiaeresis
 
 ! make caps lock behave as ctrl
 remove Lock = Caps_Lock
-add Control = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
