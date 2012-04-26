@@ -1,23 +1,15 @@
-import System.Exit
+import qualified Data.Map as M
 import XMonad
-import XMonad.Actions.SpawnOn
 import XMonad.Config.Gnome
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Layout
-import XMonad.Layout.Circle
-import XMonad.Layout.IM
-import XMonad.Layout.Maximize
 import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Reflect
 import XMonad.Layout.ResizeScreen
 import XMonad.Layout.ToggleLayouts
-import XMonad.ManageHook
 import XMonad.Util.Run
 
-import qualified Data.Map as M
+baseConfig = gnomeConfig
 
 myWorkSpaces = ["1", "2", "3", "4", "5", "6"]
 
@@ -45,21 +37,6 @@ myLayoutHook = smartBorders $ toggleLayouts Full (avoidStruts (tiled ||| Mirror 
         d = 20
         shrink = resizeHorizontal d . resizeHorizontalRight d . resizeVertical d . resizeVerticalBottom d
 
-main = do
-    pipe <- spawnPipe "dzen2 -w 500 -ta l -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
-    conky <- spawnPipe "conky -c ~/.xmonad/conkyrc | dzen2 -x 500 -ta r -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
-    --safeSpawn "stalonetray" ["-d", "all", "-p", "-t"]
-    xmonad defaultConfig {
-        logHook            = dynamicLogWithPP $ dzenStuff pipe,
-        manageHook         = manageDocks <+> myManageHook <+> manageHook defaultConfig,
-        --handleEventHook    = docksEventHook <+> handleEventHook defaultConfig,
-        layoutHook         = myLayoutHook,
-        keys               = \c -> myKeys c `M.union` keys defaultConfig c,
-        workspaces         = myWorkSpaces,
-        borderWidth        = 2,
-        focusedBorderColor = "#3399ff"
-    }
-
 dzenStuff pipe = dzenPP
     { ppOutput          = hPutStrLn pipe
     , ppCurrent         = dzenColor "#3399ff" "" . wrap " " ""
@@ -69,4 +46,19 @@ dzenStuff pipe = dzenPP
     , ppSep             = " | "
     , ppLayout          = const ""
     , ppTitle           = dzenColor "#ffffff" "" . dzenEscape
+    }
+
+main = do
+    --pipe <- spawnPipe "dzen2 -w 500 -ta l -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
+    --conky <- spawnPipe "conky -c ~/.xmonad/conkyrc | dzen2 -x 500 -ta r -y 0 -fg '#777777' -bg '#222222' -fn 'monospace:bold:size=11'"
+    --safeSpawn "stalonetray" ["-d", "all", "-p", "-t"]
+    xmonad baseConfig {
+        --logHook            = dynamicLogWithPP $ dzenStuff pipe,
+        manageHook         = manageDocks <+> myManageHook <+> manageHook baseConfig,
+        --handleEventHook    = docksEventHook <+> handleEventHook baseConfig,
+        layoutHook         = myLayoutHook,
+        keys               = \c -> myKeys c `M.union` keys baseConfig c,
+        workspaces         = myWorkSpaces,
+        borderWidth        = 2,
+        focusedBorderColor = "#3399ff"
     }
