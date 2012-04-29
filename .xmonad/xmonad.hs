@@ -28,6 +28,7 @@ myKeys (XConfig {modMask = modm}) = M.fromList $
     ]
 
 --myLayoutHook = withNewRectangle (Rectangle 0 0 1280 720) (noBorders Full)
+--recordmydesktop -x 1 -y 1 --width 1281 --height 721 -o foo.ogv
 myLayoutHook = smartBorders $ toggleLayouts Full (avoidStruts (tiled ||| Mirror tiled))
     where
         tiled = Tall nmaster delta ratio
