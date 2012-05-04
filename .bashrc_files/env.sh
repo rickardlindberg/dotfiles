@@ -1,3 +1,3 @@
 export CDPATH=".:~"
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/.cabal/bin:$HOME/bin:$PATH
 export EDITOR=vim
