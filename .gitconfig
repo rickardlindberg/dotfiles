@@ -9,3 +9,5 @@
 	history-view-vpane-position = 544
 [core]
 	excludesfile = ~/.gitignore.global
+[push]
+	default = tracking
