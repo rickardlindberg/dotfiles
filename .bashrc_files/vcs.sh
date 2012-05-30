@@ -26,7 +26,7 @@ d() {
 
 c() {
     if _is_inside_git_repo; then
-        git commit "$@"
+        git commit -v "$@"
     elif _is_inside_hg_repo; then
         hg commit "$@"
     elif _is_inside_svn_repo; then
