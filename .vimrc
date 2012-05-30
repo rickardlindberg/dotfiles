@@ -155,7 +155,7 @@ if has("gui_running")
     set guioptions-=L
     colorscheme candycode
 else
-    set background=dark
+    set background=light
     let g:solarized_termtrans = 1
     colorscheme solarized
 endif
