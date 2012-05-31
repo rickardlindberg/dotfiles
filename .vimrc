@@ -127,6 +127,9 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlo
 autocmd BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
 
+" = Project: .xmonad/xmonad.hs 
+autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
+
 " = Python folding
 function! PythonCommentFold()
     setlocal foldmethod=expr
