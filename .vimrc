@@ -156,7 +156,8 @@ if has("gui_running")
     set guioptions-=R
     set guioptions-=l " Hide left scroll bar
     set guioptions-=L
-    colorscheme desertEx
+    colorscheme solarized
+    set background=light
 else
     set background=light
     let g:solarized_termtrans = 1
