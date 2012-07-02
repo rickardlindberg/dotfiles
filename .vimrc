@@ -114,6 +114,9 @@ autocmd BufEnter *.js
 autocmd BufEnter **/test-js/**/*.js
     \ vmap <buffer> <Leader>em :call ExtractJsTestMethod()<CR>
 
+" = Don't wrap lines in textile files
+autocmd BufEnter *.textile set tw=0
+
 " = No spell in cwindow
 autocmd BufNewFile,BufReadPost * if &buftype != '' | setlocal nospell | endif
 
