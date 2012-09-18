@@ -1,3 +1,5 @@
+export AUTHOR_RL_RS='--author="Rickard Lindberg and Rasmus Svensson <ricli85+raek@gmail.com>"'
+
 s() {
     if _is_inside_git_repo; then
         git status "$@"
