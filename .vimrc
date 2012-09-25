@@ -35,51 +35,10 @@ set textwidth=79
 set scrolloff=3
 set winwidth=80
 
-" = Function: GoToPrevEditedFile
-function! GoToPrevEditedFile()
-    let currentFile = expand("%")
-    while currentFile == expand("%")
-        execute "normal \<c-o>"
-    endwhile
-endfunction
-
-" = Refactorings
-function! ExtractJsTestMethod() range
-    let name = inputdialog("Name: ")
-    if name == ""
-        return
-    endif
-    let params = inputdialog("Parameters: ")
-    let test_case_name = expand("%:t:r")
-    execute a:firstline . "," . a:lastline . "d r"
-    execute "normal Othis." . name . "(" . params . ");"
-    execute "normal /^};$\<CR>"
-    execute "normal o"
-    execute "normal o" . test_case_name . ".prototype." . name . " = function (" . params . ") {"
-    execute "normal o};"
-    execute "normal \"rP"
-endfunction
-
-function! ExtractJsMethod() range
-    let name = inputdialog("Name: ")
-    if name == ""
-        return
-    endif
-    let params = inputdialog("Parameters: ")
-    execute a:firstline . "," . a:lastline . "d r"
-    execute "normal Othis." . name . "(" . params . ");"
-    execute "normal /  },$\<CR>"
-    execute "normal o"
-    execute "normal o" . name . ": function (" . params . ") {"
-    execute "normal o},"
-    execute "normal \"rP"
-endfunction
-
 " = Mappings
 let mapleader = ","
 
 map <F2> :cn<CR>
-map <F7> :call GoToPrevEditedFile()<CR>
 map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
 nmap <Space> <C-f>
@@ -97,23 +56,9 @@ map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
 map <Leader>qq :qall!<CR>
 map <Leader>xo :!xdg-open <cfile> &<CR>
-map <F5> :tj <C-r><C-w><CR>
-
-if &diff
-    map <C-q> :qall<CR>
-    map <Up> [c
-    map <Down> ]c
-    map <Right> :diffget<CR>
-endif
 
 " = Autocommand clear
 autocmd!
-
-" = Refactoring mapping
-autocmd BufEnter *.js
-    \ vmap <buffer> <Leader>em :call ExtractJsMethod()<CR>
-autocmd BufEnter **/test-js/**/*.js
-    \ vmap <buffer> <Leader>em :call ExtractJsTestMethod()<CR>
 
 " = Don't wrap lines in textile files
 autocmd BufEnter *.textile set tw=0
@@ -133,13 +78,6 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 
 " = Project: .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
-
-" = Python folding
-function! PythonCommentFold()
-    setlocal foldmethod=expr
-    setlocal foldexpr=getline(v:lnum)=~'^\ *#'?'1':0
-endfunction
-autocmd BufReadPost *.py call PythonCommentFold()
 
 " = UI
 syntax enable
