@@ -96,6 +96,7 @@ map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
 map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
 map <Leader>qq :qall!<CR>
+map <Leader>xo :!xdg-open <cfile> &<CR>
 map <F5> :tj <C-r><C-w><CR>
 
 if &diff
@@ -130,7 +131,7 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlo
 autocmd BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
 
-" = Project: .xmonad/xmonad.hs 
+" = Project: .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
 " = Python folding
