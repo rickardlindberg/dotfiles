@@ -3,6 +3,8 @@ call pathogen#runtime_append_all_bundles("plugins")
 let g:snippets_dir="~/.vim/snippets"
 
 " = Filetype autodetection
+filetype off " On some Linux systems, this is necessary to make sure pathogen
+             " picks up ftdetect directories in plugins! :(
 filetype plugin indent on
 
 " = Tab
