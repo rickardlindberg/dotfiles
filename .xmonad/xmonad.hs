@@ -19,6 +19,7 @@ myManageHook = composeAll
     , className =? "Kompare" --> doFullFloat
     , className =? "Hgk"     --> doFullFloat
     , className =? "Gitk"    --> doFullFloat
+    , stringProperty "WM_WINDOW_ROLE" =? "gimp-toolbox-color-dialog" --> doFloat
     ]
 
 myKeys (XConfig {modMask = modm}) = M.fromList $
