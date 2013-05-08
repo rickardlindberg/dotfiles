@@ -37,6 +37,28 @@ set textwidth=79
 set scrolloff=3
 set winwidth=80
 
+" = Functions
+
+" Alternative: http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html
+function! MultipleFileRename()
+  let grep_cmd = input(":grep ", expand('<cword>'))
+  let replace_cmd = input(":s", "/\\<" . expand('<cword>') . "\\>/" . expand('<cword>') . "/gc\<Left>\<Left>\<Left>")
+  try
+    exe "grep " . grep_cmd
+    crewind
+    while 1
+        exe "s" . replace_cmd
+        update
+      try
+        cnext
+      catch
+        return
+      endtry
+    endwhile
+  catch
+  endtry
+endfunction
+
 " = Mappings
 let mapleader = ","
 
