@@ -36,6 +36,7 @@ set smartindent
 set textwidth=79
 set scrolloff=3
 set winwidth=80
+set colorcolumn=+1
 
 " = Functions
 
