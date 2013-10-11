@@ -7,11 +7,7 @@ filetype off " On some Linux systems, this is necessary to make sure pathogen
              " picks up ftdetect directories in plugins! :(
 filetype plugin indent on
 
-" = Tab
-set tabstop=8
-set shiftwidth=4
-set softtabstop=4
-set expandtab
+source ~/.vim/vimrc_editing.vim
 
 " = Search
 set noignorecase
@@ -29,13 +25,8 @@ set pumheight=20
 " = Spell checking
 set spell
 
-" = Indent
-set smartindent
-
 " = Text display options
-set textwidth=79
 set scrolloff=3
-set winwidth=80
 set colorcolumn=+1
 
 " = Mappings
@@ -50,7 +41,6 @@ noremap <C-]> :tj <C-r><C-w><CR>
 
 map <Leader><Leader> <C-^>
 map <Leader>fb :FufBuffer<CR>
-map <Leader>sip vip:!sort<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
