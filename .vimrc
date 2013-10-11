@@ -38,28 +38,6 @@ set scrolloff=3
 set winwidth=80
 set colorcolumn=+1
 
-" = Functions
-
-" Alternative: http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html
-function! MultipleFileRename()
-  let grep_cmd = input(":grep ", expand('<cword>'))
-  let replace_cmd = input(":s", "/\\<" . expand('<cword>') . "\\>/" . expand('<cword>') . "/gc\<Left>\<Left>\<Left>")
-  try
-    exe "grep " . grep_cmd
-    crewind
-    while 1
-        exe "s" . replace_cmd
-        update
-      try
-        cnext
-      catch
-        return
-      endtry
-    endwhile
-  catch
-  endtry
-endfunction
-
 " = Mappings
 let mapleader = ","
 
@@ -75,7 +53,6 @@ map <Leader>fb :FufBuffer<CR>
 map <Leader>sip vip:!sort<CR>
 map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
-map <Leader>rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<Left><Left><Left>
 map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
 map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
@@ -104,6 +81,30 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 " = Project: .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
+
+" = Rename
+map ,rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<C-f>F/F/l
+map ,mrw :call MultipleFileRename()<CR>
+
+" Alternative: http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html
+function! MultipleFileRename()
+  let grep_cmd = input(":grep ", expand('<cword>'))
+  let replace_cmd = input(":s", "/\\<" . expand('<cword>') . "\\>/" . expand('<cword>') . "/gc\<C-f>")
+  try
+    exe "grep " . grep_cmd
+    crewind
+    while 1
+        exe "s" . replace_cmd
+        update
+      try
+        cnext
+      catch
+        return
+      endtry
+    endwhile
+  catch
+  endtry
+endfunction
 " = UI
 syntax enable
 set laststatus=2      " Always show status line for a window
