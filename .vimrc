@@ -110,6 +110,14 @@ function! MultipleFileRename()
   catch
   endtry
 endfunction
+
+" = Test
+let g:rl_tests=""
+function! UpdateRlTests()
+  let g:rl_tests = input("Tests: ", g:rl_tests)
+endfunction
+map ,ts :call UpdateRlTests()<CR>
+
 " = UI
 syntax enable
 set laststatus=2      " Always show status line for a window
