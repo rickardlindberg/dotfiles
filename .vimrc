@@ -8,12 +8,7 @@ filetype off " On some Linux systems, this is necessary to make sure pathogen
 filetype plugin indent on
 
 source ~/.vim/vimrc_editing.vim
-
-" = Search
-set noignorecase
-set hlsearch
-set incsearch
-set grepprg=ack
+source ~/.vim/vimrc_searching.vim
 
 " = Completion
 set nowildmenu
