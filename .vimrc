@@ -93,8 +93,8 @@ map ,mrw :call MultipleFileRename()<CR>
 
 " Alternative: http://www.ibrahim-ahmed.com/2008/01/find-and-replace-in-multiple-files-in.html
 function! MultipleFileRename()
-  let grep_cmd = input(":grep ", expand('<cword>'))
-  let replace_cmd = input(":s", "/\\<" . expand('<cword>') . "\\>/" . expand('<cword>') . "/gc\<C-f>")
+  let grep_cmd = input(":grep ", "\"\\b" . expand('<cword>') . "\\b\"")
+  let replace_cmd = input(":s", "/\\<" . expand('<cword>') . "\\>/" . expand('<cword>') . "/gc\<C-f>F/F/l")
   try
     exe "grep " . grep_cmd
     crewind
