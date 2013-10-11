@@ -81,6 +81,11 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 " = Project: .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
+" = Browse
+let g:tagbar_compact = 1
+let g:tagbar_width = 60
+let g:tagbar_sort=0
+map ,o :TagbarOpenAutoClose<CR>
 
 " = Rename
 map ,rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<C-f>F/F/l
