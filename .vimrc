@@ -9,6 +9,7 @@ filetype plugin indent on
 
 source ~/.vim/vimrc_editing.vim
 source ~/.vim/vimrc_searching.vim
+source ~/.vim/vimrc_browsing.vim
 
 " = Completion
 set nowildmenu
@@ -20,25 +21,15 @@ set pumheight=20
 " = Spell checking
 set spell
 
-" = Text display options
-set scrolloff=3
-set colorcolumn=+1
-
 " = Mappings
 let mapleader = ","
 
 map <F2> :cn<CR>
 map <F11> :set syntax=mail<CR>
 map <F12> :set spelllang=sv<CR>
-nmap <Space> <C-f>
-nmap <S-Space> <C-b>
-noremap <C-]> :tj <C-r><C-w><CR>
 
 map <Leader><Leader> <C-^>
-map <Leader>fb :FufBuffer<CR>
-map <Leader>ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
-map <Leader>h :let @/="\\<<C-R><C-W>\\>"<CR>
 map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
 map <Leader>qq :qall!<CR>
@@ -65,12 +56,6 @@ autocmd BufWritePost ~/.vim/* source ~/.vimrc
 
 " = Project: .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
-
-" = Browse
-let g:tagbar_compact = 1
-let g:tagbar_width = 60
-let g:tagbar_sort=0
-map ,o :TagbarOpenAutoClose<CR>
 
 " = Rename
 map ,rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<C-f>F/F/l
@@ -129,6 +114,7 @@ else
     let g:solarized_termtrans = 1
     colorscheme solarized
 endif
+set colorcolumn=+1
 
 " = Local settings
 if filereadable(expand("~/.vim/local.vim"))
