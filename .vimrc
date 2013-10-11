@@ -10,6 +10,7 @@ filetype plugin indent on
 source ~/.vim/vimrc_editing.vim
 source ~/.vim/vimrc_searching.vim
 source ~/.vim/vimrc_browsing.vim
+source ~/.vim/vimrc_viewing.vim
 
 " = Completion
 set nowildmenu
@@ -18,17 +19,9 @@ set completeopt=longest,menu,preview
 set wildignore=*.pyc,*.o,*.hi
 set pumheight=20
 
-" = Spell checking
-set spell
-
 " = Mappings
 let mapleader = ","
 
-map <F2> :cn<CR>
-map <F11> :set syntax=mail<CR>
-map <F12> :set spelllang=sv<CR>
-
-map <Leader><Leader> <C-^>
 map <Leader>gt :!ctags --python-kinds=-i --extra=+f -R .
 map <Leader>b :bd<CR>
 map <Leader>sh V:!sh<CR>
@@ -87,34 +80,6 @@ function! UpdateRlTests()
   let g:rl_tests = input("Tests: ", g:rl_tests)
 endfunction
 map ,ts :call UpdateRlTests()<CR>
-
-" = UI
-syntax enable
-set laststatus=2      " Always show status line for a window
-
-" Highlight extra whitespace
-highlight ExtraWhiteSpace ctermbg=red guibg=red
-au ColorScheme * highlight ExtraWhiteSpace guibg=red
-au BufEnter * match ExtraWhiteSpace /\s\+$/
-au InsertEnter * match ExtraWhiteSpace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
-
-if has("gui_running")
-    set guioptions-=T " Hide toolbar
-    set guioptions+=c " Use console dialogs
-    set guioptions-=m " Hide menu bar
-    set guioptions-=r " Hide right scroll bar
-    set guioptions-=R
-    set guioptions-=l " Hide left scroll bar
-    set guioptions-=L
-    colorscheme solarized
-    set background=light
-else
-    set background=light
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-endif
-set colorcolumn=+1
 
 " = Local settings
 if filereadable(expand("~/.vim/local.vim"))
