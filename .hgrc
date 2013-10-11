@@ -9,6 +9,7 @@ mq =
 purge =
 convert =
 eol =
+hgk =
 
 [extdiff]
 cmd.vdiff = kompare
