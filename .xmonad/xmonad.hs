@@ -1,6 +1,6 @@
 import qualified Data.Map as M
 import XMonad
-import XMonad.Config.Gnome
+import XMonad.Config.Xfce
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -9,7 +9,7 @@ import XMonad.Layout.ResizeScreen
 import XMonad.Layout.ToggleLayouts
 import XMonad.Util.Run
 
-baseConfig = gnomeConfig
+baseConfig = xfceConfig
 
 myWorkSpaces = ["1", "2", "3", "4", "5", "6"]
 
