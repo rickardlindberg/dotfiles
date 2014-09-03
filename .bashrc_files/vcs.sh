@@ -31,11 +31,21 @@ c() {
     if _is_inside_git_repo; then
         git commit -v "$@"
     elif _is_inside_hg_repo; then
-        hg commit "$@"
+        qct "$@"
     elif _is_inside_svn_repo; then
         svn commit "$@"
     else
         echo "No repository found"
+    fi
+}
+
+vc() {
+    if _is_inside_git_repo; then
+        git-cola
+    elif _is_inside_hg_repo; then
+        qct
+    else
+        echo "No visual commit tool found"
     fi
 }
 
