@@ -16,9 +16,6 @@ myWorkSpaces = ["1", "2", "3", "4", "5", "6"]
 -- Find name to put here with `xprop | grep WM_CLAS`
 myManageHook = composeAll
     [ resource  =? "Do"      --> doIgnore
-    , className =? "Kompare" --> doFullFloat
-    , className =? "Hgk"     --> doFullFloat
-    , className =? "Gitk"    --> doFullFloat
     , stringProperty "WM_WINDOW_ROLE" =? "gimp-toolbox-color-dialog" --> doFloat
     ]
 
