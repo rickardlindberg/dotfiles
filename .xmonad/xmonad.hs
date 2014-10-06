@@ -4,6 +4,7 @@ import XMonad.Config.Xfce
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizeScreen
 import XMonad.Layout.ToggleLayouts
@@ -58,6 +59,7 @@ main = do
         layoutHook         = myLayoutHook,
         keys               = \c -> myKeys c `M.union` keys baseConfig c,
         workspaces         = myWorkSpaces,
+        startupHook        = setWMName "LG3D",
         borderWidth        = 2,
         focusedBorderColor = "#3399ff"
     }
