@@ -33,21 +33,19 @@ create_links() {
 }
 
 list_dotfiles() {
-    files_in_repo | remove_non_dotfiles | treat_direcotry_as_single
-}
-
-files_in_repo() {
-    git ls-tree -r --name-only HEAD
-}
-
-remove_non_dotfiles() {
-    grep -v '^\(install.sh\|\.gitignore\)$'
-}
-
-treat_direcotry_as_single() {
-    grep -v '^\(\.vim/.\)' | grep -v '^\(\.bashrc_files/.\)'
-    echo '.vim'
-    echo '.bashrc_files'
+    echo .Xmodmap
+    echo .bashrc
+    echo .bashrc_files
+    echo .gitconfig
+    echo .gitignore.global
+    echo .hgignore
+    echo .hgrc
+    echo .screenrc
+    echo .vim
+    echo .vimrc
+    echo .xmonad/conkyrc
+    echo .xmonad/xmonad.hs
+    echo bin/sync-folders
 }
 
 execute() {
