@@ -13,6 +13,9 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'diff' | setlocal
 " No spell in Haskell files
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlocal nospell | endif
 
+" No spell in Erlang files
+autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'erlang' | setlocal nospell | endif
+
 " .vimrc
 autocmd BufWritePost ~/.vimrc source ~/.vimrc
 autocmd BufWritePost ~/.vim/* source ~/.vimrc
