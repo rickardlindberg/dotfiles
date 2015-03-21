@@ -17,8 +17,8 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlo
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'erlang' | setlocal nospell | endif
 
 " .vimrc
-autocmd BufWritePost ~/.vimrc source ~/.vimrc
-autocmd BufWritePost ~/.vim/* source ~/.vimrc
+autocmd BufWritePost .vimrc      source ~/.vimrc | echomsg ".vimrc sourced"
+autocmd BufWritePost vimrc_*.vim source ~/.vimrc | echomsg ".vimrc sourced"
 
 " .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
