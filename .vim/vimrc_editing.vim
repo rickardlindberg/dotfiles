@@ -26,8 +26,10 @@ function! SubstituteInFile(text)
 endfunction
 
 function! SubstituteInCodebase(text)
-    execute GetGrepCommand(a:text)
-    call QuickfixDo(GetSubstituteCommand("", a:text) . " | update")
+    let grepCommand = GetGrepCommand(a:text)
+    let substituteCommand = GetSubstituteCommand("", a:text)
+    execute grepCommand
+    call QuickfixDo(substituteCommand . " | update")
 endfunction
 
 function! GetGrepCommand(term)
