@@ -16,6 +16,7 @@ set completeopt=longest,menu,preview
 set wildignore=*.pyc,*.o,*.hi
 set pumheight=20
 
+map <F5> :source ~/.vimrc<CR>
 map ,sip vip:!sort<CR>
 map ,rw :%s/\<<C-R><C-W>\>/<C-R><C-W>/gc<C-f>F/F/l
 map ,mrw :call MultipleFileRename()<CR>
