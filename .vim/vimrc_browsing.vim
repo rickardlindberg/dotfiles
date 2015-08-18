@@ -17,3 +17,5 @@ map ,o :TagbarOpenAutoClose<CR>
 
 map <F2> :cn<CR>
 map ,, <C-^>
+
+let NERDTreeIgnore=['.pyc$']
