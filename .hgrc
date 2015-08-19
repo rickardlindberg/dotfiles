@@ -13,3 +13,6 @@ hgk =
 
 [extdiff]
 cmd.vdiff = kompare
+
+[qct]
+signoff =
