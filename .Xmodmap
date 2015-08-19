@@ -1,3 +1,9 @@
+! In order for this to survive USB plug/unplug and suspend/resume:
+! System Settings -> Input Devices -> Keyboard -> Advanced
+! Check "Configure keyboard options"
+! Only checking this seems to help.
+! KDE alternative? https://userbase.kde.org/Tutorials/ComposeKey
+
 ! setup mode switch on Alt_GR
 keysym Alt_R = Mode_switch
 
