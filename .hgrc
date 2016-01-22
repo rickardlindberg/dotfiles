@@ -11,6 +11,7 @@ purge =
 convert =
 eol =
 hgk =
+shelve =
 
 [extdiff]
 cmd.vdiff = kompare
