@@ -1,1 +1,0 @@
-- Reloading .vimrc seems to break snippets.
