@@ -1,6 +1,7 @@
 [ui]
 username = Rickard Lindberg <ricli85@gmail.com>
 ignore = ~/.hgignore
+merge = internal:merge
 
 [extensions]
 hgext.extdiff =
