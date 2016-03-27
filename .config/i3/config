@@ -127,5 +127,6 @@ bar {
 
 exec_always xscreensaver -no-splash
 exec ~/bin/config-monitors
+exec redshift-gtk
 
 for_window [class="Git-cola"] fullscreen enable
