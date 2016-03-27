@@ -125,3 +125,4 @@ bar {
 }
 
 exec_always xscreensaver -no-splash
+exec ~/bin/config-monitors
