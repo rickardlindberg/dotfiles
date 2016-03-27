@@ -45,6 +45,7 @@ list_dotfiles() {
     echo .vimrc
     echo .xmonad/conkyrc
     echo .xmonad/xmonad.hs
+    echo .config/i3/config
     echo bin/sync-folders
 }
 
