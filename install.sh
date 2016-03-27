@@ -47,6 +47,7 @@ list_dotfiles() {
     echo .xmonad/xmonad.hs
     echo .config/i3/config
     echo bin/sync-folders
+    echo bin/config-monitors
 }
 
 execute() {
