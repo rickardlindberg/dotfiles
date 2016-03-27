@@ -122,8 +122,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        font pango:monospace 11
 }
 
 exec_always xscreensaver -no-splash
 exec ~/bin/config-monitors
+
 for_window [class="Git-cola"] fullscreen enable
