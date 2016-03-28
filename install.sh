@@ -49,6 +49,7 @@ list_dotfiles() {
     echo bin/sync-folders
     echo bin/config-monitors
     echo bin/gotosleep
+    echo .i3status
 }
 
 execute() {
