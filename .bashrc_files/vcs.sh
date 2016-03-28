@@ -3,6 +3,7 @@ export AUTHOR_RL_KG='--author="Rickard Lindberg and Kajsa Goffrich <ricli85+kajg
 
 s() {
     if _is_inside_git_repo; then
+        git branch
         git status "$@"
     elif _is_inside_hg_repo; then
         hg status "$@"
