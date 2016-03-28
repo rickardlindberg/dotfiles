@@ -123,6 +123,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c ~/.i3status
         font pango:monospace 11
+        separator_symbol "|"
         colors {
             background #002b36
             statusline #268bd2
