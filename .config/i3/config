@@ -126,6 +126,7 @@ bar {
 }
 
 exec_always xscreensaver -no-splash
+exec_always xsetroot -solid '#101010'
 exec ~/bin/config-monitors
 exec redshift-gtk
 
