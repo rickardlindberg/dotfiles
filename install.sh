@@ -48,6 +48,7 @@ list_dotfiles() {
     echo .config/i3/config
     echo bin/sync-folders
     echo bin/config-monitors
+    echo bin/gotosleep
 }
 
 execute() {
