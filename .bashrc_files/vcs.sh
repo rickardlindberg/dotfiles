@@ -40,6 +40,18 @@ c() {
     fi
 }
 
+h() {
+    if _is_inside_git_repo; then
+        gitk --all "$@"
+    elif _is_inside_hg_repo; then
+        hg view "$@"
+    elif _is_inside_svn_repo; then
+        svn log "$@"
+    else
+        echo "No repository found"
+    fi
+}
+
 _is_inside_git_repo() {
     git status > /dev/null 2>&1
 }
