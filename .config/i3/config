@@ -129,6 +129,7 @@ exec_always xscreensaver -no-splash
 exec_always xsetroot -solid '#101010'
 exec ~/bin/config-monitors
 exec redshift-gtk
+exec nm-applet
 
 for_window [class="Git-cola"] fullscreen enable
 
