@@ -133,7 +133,7 @@ bar {
 
 exec_always xscreensaver -no-splash
 exec_always xsetroot -solid '#001F28'
-exec ~/bin/config-monitors
+exec_always ~/bin/config-monitors
 exec redshift-gtk
 exec nm-applet
 
