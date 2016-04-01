@@ -139,6 +139,7 @@ exec nm-applet
 
 for_window [class="Git-cola"] fullscreen enable
 for_window [class="Gitk"] fullscreen enable
+for_window [class="Kompare"] fullscreen enable
 
 workspace 1 output DP1
 workspace 2 output DP1
