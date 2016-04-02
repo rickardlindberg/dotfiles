@@ -46,6 +46,7 @@ list_dotfiles() {
     echo .xmonad/conkyrc
     echo .xmonad/xmonad.hs
     echo .config/i3/config
+    echo .config/i3/myi3status
     echo bin/sync-folders
     echo bin/config-monitors
     echo bin/gotosleep
