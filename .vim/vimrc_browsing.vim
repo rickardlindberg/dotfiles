@@ -15,7 +15,8 @@ let g:tagbar_width = 60
 let g:tagbar_sort = 0
 map ,o :TagbarOpenAutoClose<CR>
 
-map <F2> :cn<CR>
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
 map ,, <C-^>
 
 let NERDTreeIgnore=['.pyc$']
