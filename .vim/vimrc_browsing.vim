@@ -9,6 +9,7 @@ map ,b :bd<CR>
 map ,qq :qall!<CR>
 map ,xo :!xdg-open <cfile> &<CR>
 map ,gt :!ctags --python-kinds=-i --extra=+f -R .
+map ,tt :NERDTree<CR>
 
 let g:tagbar_compact = 1
 let g:tagbar_width = 60
