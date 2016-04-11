@@ -16,5 +16,8 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'haskell' | setlo
 " No spell in Erlang files
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'erlang' | setlocal nospell | endif
 
+" 2 space indent in yaml files
+autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'yaml' | setlocal sw=2 sts=2 | endif
+
 " .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
