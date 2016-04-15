@@ -117,6 +117,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+Shift+u exec xscreensaver-command -lock
 
 bar {
         status_command ~/.config/i3/myi3status
