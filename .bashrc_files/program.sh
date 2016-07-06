@@ -1,4 +1,4 @@
-export HH_CONFIG=hicolor,keywords         # get more colors
+export HH_CONFIG=hicolor,keywords,rawhistory         # get more colors
 shopt -s histappend              # append new history items to .bash_history
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
