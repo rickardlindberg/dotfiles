@@ -50,6 +50,8 @@ list_dotfiles() {
     echo bin/sync-folders
     echo bin/config-monitors
     echo bin/gotosleep
+    echo bin/command-client
+    echo bin/command-server
     echo .i3status
 }
 

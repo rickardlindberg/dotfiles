@@ -21,3 +21,6 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'yaml' | setlocal
 
 " .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
+
+" Command client vim
+autocmd BufWritePost * silent !command-client vim

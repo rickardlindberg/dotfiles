@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import subprocess
+import sys
+import zmq
+
+COMMAND_CONTEXT = sys.argv[1]
+COMMAND_CMD = sys.argv[2:]
+
+context = zmq.Context()
+
+socket = context.socket(zmq.REP)
+socket.bind("ipc:///tmp/command-server-{0}".format(COMMAND_CONTEXT))
+
+try:
+    while True:
+        args = socket.recv_json()
+        try:
+            subprocess.call(["clear"])
+            subprocess.call(COMMAND_CMD)
+        except:
+            pass
+        socket.send_json({
+            "status": "ok",
+        })
+except:
+    pass
+
+context.destroy(linger=0)
