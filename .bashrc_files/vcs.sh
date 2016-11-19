@@ -16,6 +16,14 @@ s() {
     fi
 }
 
+b() {
+    if _is_inside_git_repo; then
+        git branch -a | cut -c3- | rlselect | xargs git checkout
+    else
+        echo "No repository found"
+    fi
+}
+
 d() {
     if _is_inside_git_repo; then
         git diff "$@" | vi -
