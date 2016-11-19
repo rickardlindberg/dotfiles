@@ -48,7 +48,6 @@ list_dotfiles() {
     echo .config/i3/config
     echo .config/i3/myi3status
     echo bin/sync-folders
-    echo bin/config-monitors
     echo bin/gotosleep
     echo bin/command-client
     echo bin/command-server
