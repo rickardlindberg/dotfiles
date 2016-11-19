@@ -4,12 +4,13 @@ alias tp=trash-put
 
 f() {
     local program
+    local file
     if [ "$1" = "" ]; then
         program=vim
     else
         program="$1"
     fi
-    "$program" $( \
+    file=$( \
         find . \
             -type d -name .git -prune \
             -o \
@@ -30,4 +31,9 @@ f() {
             -type f -print \
         | rlselect \
     )
+    if [ $? = 0 ]; then
+        "$program" "$file"
+    else
+        return 1
+    fi
 }
