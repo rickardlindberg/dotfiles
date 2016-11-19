@@ -52,6 +52,7 @@ list_dotfiles() {
     echo bin/gotosleep
     echo bin/command-client
     echo bin/command-server
+    echo bin/rlselect
     echo .i3status
 }
 
