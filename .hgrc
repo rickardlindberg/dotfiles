@@ -14,7 +14,7 @@ hgk =
 shelve =
 
 [extdiff]
-cmd.vdiff = kompare
+cmd.vdiff = meld
 
 [qct]
 signoff =
