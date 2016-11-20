@@ -53,6 +53,7 @@ list_dotfiles() {
     echo bin/command-server
     echo bin/rlselect
     echo bin/rlselect-history
+    echo bin/f
     echo .i3status
 }
 
