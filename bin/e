@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ "$1" = "" ]; then
+    exit 1
+else
+    file="$1"
+    shift
+fi
+
+if [ "$1" = "" ]; then
+    program="gvim --servername terminal$PPID --remote-silent"
+else
+    program="$@"
+fi
+
+$program "$file"
