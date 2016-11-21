@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+if [ "$1" = "" ]; then
+    root=~
+else
+    root="$1"
+fi
+
+if [ "$2" = "" ]; then
+    depth="5"
+else
+    depth="$2"
+fi
+
+find "$root" \
+    -mindepth 1 \
+    -maxdepth "$depth" \
+    -type d -name '.*'        -prune -o \
+    -type d -name __pycache__ -prune -o \
+    -type d -name venv        -prune -o \
+    -type d -print

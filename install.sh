@@ -52,6 +52,7 @@ list_active_dotfiles() {
     echo bin/rlselect
     echo bin/rlselect-history
     echo bin/f
+    echo bin/find-dirs
 }
 
 list_inactive_dotfiles() {
