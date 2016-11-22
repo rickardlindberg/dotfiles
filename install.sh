@@ -51,9 +51,7 @@ list_active_dotfiles() {
     echo bin/command-server
     echo bin/rlselect
     echo bin/rlselect-history
-    echo bin/f
-    echo bin/se
-    echo bin/e
+    echo bin/o
     echo bin/find-files
     echo bin/find-dirs
 }
@@ -63,6 +61,9 @@ list_inactive_dotfiles() {
     echo .xmonad/conkyrc
     echo .xmonad/xmonad.hs
     echo .i3status
+    echo bin/f
+    echo bin/se
+    echo bin/e
 }
 
 execute() {

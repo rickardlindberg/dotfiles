@@ -2,11 +2,13 @@
 
 set -e
 
-if [ "$1" = "" ]; then
-    exit 1
-else
-    file="$1"
+#alias o=xdg-open
+
+if [ "$1" = "-" ]; then
+    file="$(rlselect)"
     shift
+else
+    file="$(find-files | rlselect)"
 fi
 
 if [ "$1" = "" ]; then
