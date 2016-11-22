@@ -18,7 +18,13 @@ s() {
 
 b() {
     if _is_inside_git_repo; then
-        git branch -a | cut -c3- | rlselect | xargs git checkout
+        local selection
+        selection=$(git branch -a | cut -c3- | rlselect)
+        if [ $? = 0 ]; then
+            git checkout "$selection"
+        else
+            return 1
+        fi
     else
         echo "No repository found"
     fi
