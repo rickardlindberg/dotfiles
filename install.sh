@@ -55,6 +55,8 @@ list_active_dotfiles() {
     echo bin/find-files
     echo bin/find-dirs
     echo bin/vim-find-select
+    echo bin/list-firefox-urls
+    echo bin/open-firefox-url
 }
 
 list_inactive_dotfiles() {

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+places=~/.mozilla/firefox/*.default/places.sqlite
+
+selection=$(list-firefox-urls $places | rlselect --gui)
+
+if [ $? = 0 ]; then
+    firefox "$(echo "$selection" | cut -c34-)"
+fi
