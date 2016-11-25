@@ -21,3 +21,27 @@ nmap <C-p> :cp<CR>
 map ,, <C-^>
 
 let NERDTreeIgnore=['.pyc$']
+
+function! Rlselect()
+    if has("gui_running")
+        let rlselect_command="rlselect --gui"
+    else
+        let rlselect_command="rlselect"
+    endif
+    let bufnrs = filter(range(1, bufnr("$")), 'buflisted(v:val)')
+    let buffers = map(bufnrs, 'bufname(v:val)')
+    let buffersout = join(buffers, "\n") . "\n"
+    let selection = system("vim-find-select | " . rlselect_command, buffersout)
+    if ! has("gui_running")
+        redraw!
+    endif
+    if strpart(selection, 0, 1) == "b"
+        exec ":b " . strpart(selection, 2)
+    elseif strpart(selection, 0, 1) == "t"
+        exec ":tj " . strpart(selection, 2)
+    elseif strlen(selection) > 0
+        exec ":e " . strpart(selection, 2)
+    endif
+endfunction
+
+nmap <C-t> :call Rlselect()<CR>

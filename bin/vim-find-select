@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+while read buffer; do
+    echo "b $buffer"
+done
+
+find-files | awk '{ print "  " $0 }'
+
+if [ -f tags ]; then
+    cat tags | awk '{ print "t " $1 }'
+fi

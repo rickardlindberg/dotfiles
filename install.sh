@@ -54,6 +54,7 @@ list_active_dotfiles() {
     echo bin/o
     echo bin/find-files
     echo bin/find-dirs
+    echo bin/vim-find-select
 }
 
 list_inactive_dotfiles() {
