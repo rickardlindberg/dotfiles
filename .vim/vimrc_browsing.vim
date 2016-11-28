@@ -3,7 +3,7 @@ set scrolloff=3
 nmap <Space> <C-f>
 nmap <S-Space> <C-b>
 noremap <C-]> :tj <C-r><C-w><CR>
-map ,fb :FufBuffer<CR>
+map ,fb :call Rlselect()<CR>
 map ,ew :e <C-R>=expand("%:p:h") . "/"<CR>
 map ,b :bd<CR>
 map ,qq :qall!<CR>
