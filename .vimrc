@@ -9,7 +9,6 @@ source ~/.vim/vimrc_viewing.vim
 source ~/.vim/vimrc_browsing.vim
 source ~/.vim/vimrc_search_replace.vim
 source ~/.vim/vimrc_editing.vim
-source ~/.vim/vimrc_testing.vim
 
 if filereadable(expand("~/.vim/local.vim"))
     source ~/.vim/local.vim
