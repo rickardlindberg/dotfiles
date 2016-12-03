@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 
+import locale
 import sqlite3
 import sys
 
@@ -9,17 +10,45 @@ MAX = 30
 
 
 def main():
-    for places in sys.argv[1:]:
-        print_places(places)
+    locale.setlocale(locale.LC_ALL, "")
+    for places_db in sys.argv[1:]:
+        print_places(places_db)
 
 
-def print_places(places):
-    conn = sqlite3.connect(places)
-    select = "select url, title from moz_places order by frecency desc"
-    for url, title in conn.execute(select):
-        if title is None:
-            title = ""
-        print(u"{} - {}".format(title[:MAX].ljust(MAX), url).encode("utf-8"))
+def print_places(places_db):
+    conn = sqlite3.connect(places_db)
+    print_places_from_query(conn, """
+        select moz_places.url, moz_bookmarks.title
+        from moz_bookmarks
+        inner join moz_places
+        on moz_bookmarks.fk==moz_places.id
+        where moz_places.url not like "place:%"
+        ;
+    """)
+    print_places_from_query(conn, """
+        select distinct moz_places.url, moz_places.title
+        from moz_historyvisits
+        inner join moz_places
+        on moz_historyvisits.place_id==moz_places.id
+        where moz_places.url not like "place:%"
+        order by moz_historyvisits.visit_date desc
+        limit 5000
+        ;
+    """)
+
+
+def print_places_from_query(conn, query):
+    for url, title in conn.execute(query):
+        print_place(title, url)
+
+
+def print_place(title, url):
+    if title is None:
+        title = ""
+    print(u"{} - {}".format(
+        title[:MAX].ljust(MAX),
+        url
+    ).encode(locale.getpreferredencoding()))
 
 
 if __name__ == "__main__":
