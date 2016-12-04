@@ -2,8 +2,6 @@
 
 set -e
 
-#alias o=xdg-open
-
 if [ "$1" = "-" ]; then
     file="$(rlselect)"
     shift
