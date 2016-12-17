@@ -32,7 +32,7 @@ def print_places(places_db):
         on moz_historyvisits.place_id==moz_places.id
         where moz_places.url not like "place:%"
         order by moz_historyvisits.visit_date desc
-        limit 5000
+        limit 80000
         ;
     """)
 
