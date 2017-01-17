@@ -134,7 +134,6 @@ bar {
 
 exec_always xscreensaver -no-splash
 exec_always xsetroot -solid '#001F28'
-exec_always ~/bin/config-monitors
 exec_always xmodmap ~/.Xmodmap
 exec redshift-gtk -l 59.33:18.05
 exec nm-applet
