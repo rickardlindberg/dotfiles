@@ -145,6 +145,7 @@ for_window [class="Kompare"] fullscreen enable
 for_window [class="Qct"] fullscreen enable
 for_window [class="Hgk"] fullscreen enable
 for_window [class="Rlselect"] floating toggle
+for_window [class="Meld"] fullscreen enable
 
 workspace 1 output DP1
 workspace 2 output DP1
