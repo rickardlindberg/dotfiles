@@ -16,4 +16,4 @@ find "$root" -mindepth 1 $maxdepth \
     -type d -name '.*'        -prune -o \
     -type d -name __pycache__ -prune -o \
     -type d -name venv        -prune -o \
-    -type d -print
+    -type d -printf '%d\t%p\n' | sort -n | cut -f2-
