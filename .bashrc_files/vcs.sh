@@ -6,6 +6,7 @@ s() {
         git branch
         git status "$@"
     elif _is_inside_hg_repo; then
+        hg summary
         hg status "$@"
     elif _is_inside_svn_repo; then
         svn status "$@"
