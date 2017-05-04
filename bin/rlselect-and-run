@@ -10,9 +10,7 @@ else
 fi
 
 if [ "$1" = "" ]; then
-    program="gvim --servername terminal$PPID --remote-silent"
+    gvim --servername terminal$PPID --remote-silent "$file"
 else
-    program="$@"
+    "$@" "$file"
 fi
-
-$program "$file"
