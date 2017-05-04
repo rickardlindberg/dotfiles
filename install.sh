@@ -34,40 +34,40 @@ create_links() {
 }
 
 list_active_dotfiles() {
-    echo .Xmodmap
     echo .bashrc
     echo .bashrc_files
+    echo .config/i3/config
+    echo .config/i3/myi3status
     echo .gitconfig
     echo .gitignore.global
     echo .hgignore
     echo .hgrc
     echo .vim
     echo .vimrc
-    echo .config/i3/config
-    echo .config/i3/myi3status
-    echo bin/sync-folders
-    echo bin/gotosleep
+    echo .Xmodmap
     echo bin/command-client
     echo bin/command-server
-    echo bin/rlselect
-    echo bin/rlselect-history
-    echo bin/rlselect-and-run
-    echo bin/find-files
     echo bin/find-dirs
-    echo bin/vim-find-select
+    echo bin/find-files
+    echo bin/gotosleep
     echo bin/list-firefox-urls
     echo bin/open-firefox-url
+    echo bin/rlselect
+    echo bin/rlselect-and-run
+    echo bin/rlselect-history
+    echo bin/sync-folders
+    echo bin/vim-find-select
 }
 
 list_inactive_dotfiles() {
+    echo .i3status
     echo .screenrc
     echo .xmonad/conkyrc
     echo .xmonad/xmonad.hs
-    echo .i3status
-    echo bin/f
-    echo bin/se
     echo bin/e
+    echo bin/f
     echo bin/o
+    echo bin/se
 }
 
 execute() {
