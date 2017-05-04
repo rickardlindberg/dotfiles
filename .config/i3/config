@@ -139,6 +139,7 @@ exec redshift-gtk -l 59.33:18.05
 exec nm-applet
 
 for_window [class="Git-cola"] fullscreen enable
+for_window [class="git-cola"] fullscreen enable
 for_window [class="Gitk"] fullscreen enable
 for_window [class="Kompare"] fullscreen enable
 for_window [class="Qct"] fullscreen enable
