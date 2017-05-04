@@ -3,14 +3,14 @@
 set -e
 
 if [ "$1" = "-" ]; then
-    file="$(rlselect)"
+    selection="$(rlselect)"
     shift
 else
-    file="$(find-files | rlselect)"
+    selection="$(find-files | rlselect)"
 fi
 
 if [ "$1" = "" ]; then
-    gvim --servername terminal$PPID --remote-silent "$file"
+    gvim --servername terminal$PPID --remote-silent "$selection"
 else
-    "$@" "$file"
+    "$@" "$selection"
 fi
