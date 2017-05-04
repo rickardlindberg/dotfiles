@@ -51,7 +51,7 @@ list_active_dotfiles() {
     echo bin/command-server
     echo bin/rlselect
     echo bin/rlselect-history
-    echo bin/o
+    echo bin/rlselect-and-run
     echo bin/find-files
     echo bin/find-dirs
     echo bin/vim-find-select
@@ -67,6 +67,7 @@ list_inactive_dotfiles() {
     echo bin/f
     echo bin/se
     echo bin/e
+    echo bin/o
 }
 
 execute() {
