@@ -22,5 +22,10 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'yaml' | setlocal
 " .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
-" Command client vim
-autocmd BufWritePost * execute "silent !command-server --invoke <afile>" | redraw!
+" command-server
+" The explicit redraw only seems to be needed in console Vim.
+if has("gui_running")
+    autocmd BufWritePost * execute "silent !command-server --invoke <afile>"
+else
+    autocmd BufWritePost * execute "silent !command-server --invoke <afile>" | redraw!
+endif
