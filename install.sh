@@ -45,7 +45,6 @@ list_active_dotfiles() {
     echo .vim
     echo .vimrc
     echo .Xmodmap
-    echo bin/command-client
     echo bin/command-server
     echo bin/find-dirs
     echo bin/find-files
@@ -64,6 +63,7 @@ list_inactive_dotfiles() {
     echo .screenrc
     echo .xmonad/conkyrc
     echo .xmonad/xmonad.hs
+    echo bin/command-client
     echo bin/e
     echo bin/f
     echo bin/o

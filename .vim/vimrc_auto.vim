@@ -23,4 +23,4 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'yaml' | setlocal
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
 " Command client vim
-autocmd BufWritePost * execute "silent !command-client vim" | redraw!
+autocmd BufWritePost * execute "silent !command-server --invoke <afile>" | redraw!

@@ -1,29 +1,76 @@
 #!/usr/bin/env python
 
+import os
 import subprocess
 import sys
 import zmq
 
-COMMAND_CONTEXT = sys.argv[1]
-COMMAND_CMD = sys.argv[2:]
+def main():
+    if sys.argv[1:3] == ["--invoke"]:
+        # command-server --invoke
+        invoke_server(os.getcwd())
+    elif sys.argv[1:2] == ["--invoke"]:
+        # command-server --invoke <path>
+        invoke_server(sys.argv[2])
+    else:
+        # command-server <command>...
+        start_server(os.getcwd(), sys.argv[1:])
 
-context = zmq.Context()
+def invoke_server(path):
+    context = zmq.Context()
+    try:
+        while not os.path.exists(get_ipc_path(path)):
+            path = os.path.join(path, "..")
+            if get_ipc_path(path) == get_ipc_path("/"):
+                sys.exit("Did not find server")
+        socket = context.socket(zmq.REQ)
+        socket.connect("ipc://{0}".format(get_ipc_path(path)))
+        socket.send_json({
+        })
+        if socket.poll(timeout=100) == 0:
+            sys.exit("No reply")
+        else:
+            print(socket.recv_json())
+    finally:
+        context.destroy(linger=0)
 
-socket = context.socket(zmq.REP)
-socket.bind("ipc:///tmp/command-server-{0}".format(COMMAND_CONTEXT))
-
-try:
-    while True:
-        args = socket.recv_json()
+def start_server(path, command):
+    def run_command():
         try:
             subprocess.call(["clear"])
-            subprocess.call(COMMAND_CMD)
+            subprocess.call(command)
         except:
             pass
-        socket.send_json({
-            "status": "ok",
-        })
-except:
-    pass
+    makedirs(get_ipc_dir(path))
+    if os.path.exists(get_ipc_path(path)):
+        sys.exit("Server already started")
+    context = zmq.Context()
+    try:
+        socket = context.socket(zmq.REP)
+        socket.bind("ipc://{0}".format(get_ipc_path(path)))
+        run_command()
+        while True:
+            args = socket.recv_json()
+            run_command()
+            socket.send_json({
+                "status": "ok",
+            })
+    except:
+        pass
+    context.destroy(linger=0)
 
-context.destroy(linger=0)
+def get_ipc_path(path):
+    return os.path.join(get_ipc_dir(path), ".ipc")
+
+def get_ipc_dir(path):
+    return "/tmp/command-server{0}".format(norm(path))
+
+def norm(path):
+    return os.path.normpath(os.path.abspath(path))
+
+def makedirs(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+if __name__ == "__main__":
+    main()
