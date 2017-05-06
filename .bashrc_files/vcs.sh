@@ -45,7 +45,7 @@ d() {
 
 vd() {
     if _is_inside_git_repo; then
-        git difftool -d -t kompare "$@"
+        git difftool -d -t meld "$@"
     elif _is_inside_hg_repo; then
         hg vdiff "$@"
     elif _is_inside_svn_repo; then
