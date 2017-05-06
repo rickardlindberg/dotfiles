@@ -54,6 +54,7 @@ list_active_dotfiles() {
     echo bin/rlselect
     echo bin/rlselect-and-run
     echo bin/rlselect-history
+    echo bin/rlselect-launch
     echo bin/sync-folders
     echo bin/vim-find-select
 }
