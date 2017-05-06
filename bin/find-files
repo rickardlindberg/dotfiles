@@ -2,7 +2,6 @@
 
 find . \
     -type d -name .git        -prune -o \
-    -type d -name .vim        -prune -o \
     -type d -name .hg         -prune -o \
     -type d -name __pycache__ -prune -o \
     -type d -name venv        -prune -o \
