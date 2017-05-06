@@ -40,7 +40,7 @@ function! Rlselect()
     elseif strpart(selection, 0, 1) == "t"
         exec ":tj " . strpart(selection, 2)
     elseif strlen(selection) > 0
-        exec ":e " . strpart(selection, 2)
+        exec ":e " . substitute(strpart(selection, 2), " ", "\\\\ ", "g")
     endif
 endfunction
 
