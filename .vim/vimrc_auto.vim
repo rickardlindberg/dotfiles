@@ -19,6 +19,12 @@ autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'erlang' | setloc
 " 2 space indent in yaml files
 autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'yaml' | setlocal sw=2 sts=2 | endif
 
+" 2 space indent in css files
+autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'css' | setlocal sw=2 sts=2 | endif
+
+" 2 space indent in html files
+autocmd BufNewFile,BufReadPost,StdinReadPost * if &filetype == 'html' | setlocal sw=2 sts=2 | endif
+
 " .xmonad/xmonad.hs
 autocmd BufWritePost ~/.xmonad/xmonad.hs !xmonad --recompile
 
