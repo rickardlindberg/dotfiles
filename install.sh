@@ -51,7 +51,6 @@ list_active_dotfiles() {
     echo bin/gotosleep
     echo bin/list-firefox-urls
     echo bin/open-firefox-url
-    echo bin/rlselect
     echo bin/rlselect-and-run
     echo bin/rlselect-history
     echo bin/rlselect-launch
@@ -70,6 +69,7 @@ list_inactive_dotfiles() {
     echo bin/f
     echo bin/o
     echo bin/se
+    echo bin/rlselect
 }
 
 execute() {
