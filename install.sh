@@ -52,7 +52,6 @@ list_active_dotfiles() {
     echo bin/list-firefox-urls
     echo bin/open-firefox-url
     echo bin/rlselect-and-run
-    echo bin/rlselect-history
     echo bin/rlselect-launch
     echo bin/rlselect-remember
     echo bin/sync-folders
@@ -70,6 +69,7 @@ list_inactive_dotfiles() {
     echo bin/o
     echo bin/se
     echo bin/rlselect
+    echo bin/rlselect-history
 }
 
 execute() {
