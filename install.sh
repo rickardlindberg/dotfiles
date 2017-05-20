@@ -68,8 +68,6 @@ list_inactive_dotfiles() {
     echo bin/f
     echo bin/o
     echo bin/se
-    echo bin/rlselect
-    echo bin/rlselect-history
 }
 
 execute() {
