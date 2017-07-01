@@ -6,12 +6,18 @@ merge = internal:merge
 [extensions]
 hgext.extdiff =
 rebase =
+histedit =
 mq =
 purge =
 convert =
 eol =
 hgk =
 shelve =
+color =
+pager =
+
+[pager]
+pager = LESS='FRX' less
 
 [extdiff]
 cmd.vdiff = meld
