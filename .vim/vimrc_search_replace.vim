@@ -7,6 +7,7 @@ map ,h :let @/="\\<<C-R><C-W>\\>"<CR>
 nnoremap <CR> :nohlsearch<CR><CR>
 map ,rw :call SubstituteInFile(expand("<cword>"))<CR>
 map ,mrw :call SubstituteInCodebase(expand("<cword>"))<CR>
+map ,mrW :call SubstituteInCodebase(expand("<cWORD>"))<CR>
 
 function! SubstituteInFile(text)
     execute GetSubstituteCommand("%", a:text)
