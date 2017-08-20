@@ -37,7 +37,7 @@ def invoke_server(path):
 def start_server(path, command):
     def run_command():
         try:
-            subprocess.call(["clear"])
+            subprocess.call(["tput", "reset"])
             subprocess.call(command)
         except:
             pass
