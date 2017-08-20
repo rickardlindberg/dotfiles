@@ -45,6 +45,7 @@ list_active_dotfiles() {
     echo .vim
     echo .vimrc
     echo .Xmodmap
+    echo .rlselect.cfg
     echo bin/command-server
     echo bin/find-dirs
     echo bin/find-files
