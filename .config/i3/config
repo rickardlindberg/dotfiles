@@ -139,6 +139,7 @@ exec_always xmodmap ~/.Xmodmap
 exec redshift-gtk -l 59.33:18.05
 exec nm-applet
 
+# Find name to put here with `xprop | grep WM_CLAS`
 for_window [class="Git-cola"] fullscreen enable
 for_window [class="git-cola"] fullscreen enable
 for_window [class="Gitk"] fullscreen enable
