@@ -31,7 +31,7 @@ function! Rlselect()
     let bufnrs = filter(range(1, bufnr("$")), 'buflisted(v:val)')
     let buffers = map(bufnrs, 'bufname(v:val)')
     let buffersout = join(buffers, "\n") . "\n"
-    let selection = system("vim-find-select | " . rlselect_command, buffersout)
+    let selection = system("vim-find-select | " . rlselect_command . " 2>/dev/null", buffersout)
     if ! has("gui_running")
         redraw!
     endif
