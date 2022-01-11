@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+
+import exifread
+import os
+import datetime
+import shutil
+import sys
+
+NUMBER_OF_PICTURES_CONSIDERED_A_SEQUENCE = 10
+MAX_SECONDS_DIFF = 5
+
+def extract_picture_sequences(source_directory, target_base_directory):
+    for index, picture_sequence in enumerate(find_picture_sequences(source_directory)):
+        extract_picture_sequence(
+            sequence=picture_sequence,
+            target_directory=os.path.join(target_base_directory, str(index))
+        )
+
+def extract_picture_sequence(sequence, target_directory):
+    os.makedirs(target_directory)
+    for picture in sequence:
+        shutil.copy2(
+            picture["path"],
+            os.path.join(target_directory, picture["name"])
+        )
+
+def find_picture_sequences(source_directory):
+    picture_sequences = []
+    for picture in find_jpeg_files(source_directory):
+        if (picture_sequences and
+            pictures_part_of_same_sequence(picture_sequences[-1][-1], picture)):
+            picture_sequences[-1].append(picture)
+        else:
+            picture_sequences.append([picture])
+    return [
+        x
+        for x
+        in picture_sequences
+        if len(x) >= NUMBER_OF_PICTURES_CONSIDERED_A_SEQUENCE
+    ]
+
+def pictures_part_of_same_sequence(left, right):
+    return (right["timestamp"] - left["timestamp"]) <= datetime.timedelta(seconds=MAX_SECONDS_DIFF)
+
+def find_jpeg_files(source_directory):
+    pictures = []
+    for root, dirs, files in os.walk(source_directory):
+        for file in files:
+            if file.endswith(".JPG"):
+                path = os.path.join(root, file)
+                pictures.append({
+                    "name": file,
+                    "path": path,
+                    "timestamp": read_exif_timestamp(path),
+                })
+    pictures.sort(key=lambda picture: picture["timestamp"])
+    return pictures
+
+def read_exif_timestamp(path):
+    with open(path, "rb") as f:
+        DATE_TAG = "Image DateTime"
+        tags = exifread.process_file(f, stop_tag=DATE_TAG, details=False)
+        if DATE_TAG in tags:
+            date_tag = tags[DATE_TAG].values
+            return datetime.datetime.strptime(date_tag, "%Y:%m:%d %H:%M:%S")
+
+if __name__ == "__main__":
+    extract_picture_sequences(
+        source_directory="/var/run/media/rick/disk/DCIM",
+        target_base_directory=sys.argv[1]
+    )

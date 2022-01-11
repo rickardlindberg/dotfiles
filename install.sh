@@ -46,6 +46,7 @@ list_active_dotfiles() {
     echo .vimrc
     echo .Xmodmap
     echo .rlselect.cfg
+    echo bin/extract-timelapses
     echo bin/command-server
     echo bin/find-dirs
     echo bin/find-files
