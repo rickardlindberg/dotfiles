@@ -1,5 +1,5 @@
 [ui]
-username = Rickard Lindberg <ricli85@gmail.com>
+username = Rickard Lindberg <rickard@rickardlindberg.me>
 ignore = ~/.hgignore
 merge = internal:merge
 
