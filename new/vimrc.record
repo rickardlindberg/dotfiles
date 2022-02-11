@@ -1,0 +1,3 @@
+s/guifont=.*/guifont=Monospace\\ RL_DOTFILE_FONT_SIZE/
+
+# vim: filetype=sed

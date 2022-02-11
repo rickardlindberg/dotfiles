@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+
+trap cleaup EXIT
+cleaup() {
+    if [ -e ~/.bash_history.screen_recording_bak ]; then
+        notify-send "Restoring Bash history"
+        mv ~/.bash_history.screen_recording_bak ~/.bash_history
+    fi
+    if [ -e ~/.viminfo.screen_recording_bak ]; then
+        notify-send "Restoring Vim info"
+        mv ~/.viminfo.screen_recording_bak ~/.viminfo
+    fi
+    (cd ~/dotfiles/new && ./install.sh)
+}
+
+mv ~/.bash_history ~/.bash_history.screen_recording_bak
+touch ~/.bash_history # TODO: make rlselect not choke on missing file
+echo "i3-msg resize set height 432" >> ~/.bash_history
+mv ~/.viminfo ~/.viminfo.screen_recording_bak
+(cd ~/dotfiles/new && ./install.sh record)
+
+simplescreenrecorder

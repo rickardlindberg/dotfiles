@@ -1,0 +1,4 @@
+s/^gui_font_size = .*/gui_font_size = RL_DOTFILE_FONT_SIZE/
+s/^gui_size = .*/gui_size = 1400, 940/
+
+# vim: filetype=sed
