@@ -1,5 +1,6 @@
 s/# RL_DOTFILE_BAR_OUTPUT.*/output eDP-1/
 s/^font pango:monospace .*/font pango:monospace 15/
 s/^default_border normal .*/default_border normal 5/
+s/^for_window.*Timeline.py.*//
 
 # vim: filetype=sed
