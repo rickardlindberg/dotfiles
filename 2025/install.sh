@@ -8,11 +8,11 @@ main() {
     rm -rf ~/.vim
     mkdir -p ~/.vim/syntax
     mkdir -p ~/.vim/colors
+
     install_file 3rd-party/solarized.vim ~/.vim/colors
     install_file bashrc                  ~/.bashrc                 "$@"
     install_file vimrc                   ~/.vimrc                  "$@"
     install_file rlselect                ~/.rlselect.cfg           "$@"
-    install_file i3                      ~/.config/i3/config       "$@"
     install_file gitconfig               ~/.config/git/config      "$@"
     install_file gitignore               ~/.config/git/ignore      "$@"
     install_bin  bin.t
@@ -23,6 +23,9 @@ main() {
     install_bin  bin.vim-find-select
     install_bin  bin.find-files
     install_bin  bin.find-dirs
+
+    install_file i3                      ~/.config/i3/config       "$@"
+    install_file xmodmap                 ~/.Xmodmap                "$@"
     install_bin  bin.my-i3-status
     run i3-msg restart
 }

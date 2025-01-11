@@ -18,6 +18,7 @@ dependencies() {
     echo fontawesome-fonts-all
     echo acpi
     echo arandr
+    echo redshift-gtk
 
     echo supertuxkart
 }
