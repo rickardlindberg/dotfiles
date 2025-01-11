@@ -12,6 +12,7 @@ main() {
     install_file 3rd-party/solarized.vim ~/.vim/colors
     install_file bashrc                  ~/.bashrc                 "$@"
     install_file vimrc                   ~/.vimrc                  "$@"
+    install_file vim_syntax_rlmeta.vim   ~/.vim/syntax/rlmeta.vim  "$@"
     install_file rlselect                ~/.rlselect.cfg           "$@"
     install_file gitconfig               ~/.config/git/config      "$@"
     install_file gitignore               ~/.config/git/ignore      "$@"

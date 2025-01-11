@@ -2,27 +2,23 @@ if exists("b:current_syntax")
     finish
 endif
 
-syntax keyword metaKeyword label
-syntax keyword metaKeyword indentprefix
-syntax keyword metaKeyword list
-syntax keyword metaKeyword dict
-syntax keyword metaKeyword add
-syntax keyword metaKeyword get
-syntax keyword metaKeyword set
-syntax keyword metaKeyword len
-syntax keyword metaKeyword int
+syntax keyword metaKeyword actor
+"syntax keyword metaKeyword def
+syntax keyword metaKeyword where
+syntax keyword metaKeyword examples
+syntax keyword metaKeyword universe
 
 syntax region metaString start=+"+ end=+"+ skip=+\\'\|\\"\|\\\\\|\\n\|\\t+
 
 syntax region metaChars start=+'+ end=+'+ skip=+\\'\|\\"\|\\\\\|\\n\|\\t+
+
+syntax region metaDef start=+^def.*$+ end=+^+ skip=+^ .*$+ contains=python
 
 syntax match metaPatternOperator +[|]+
 syntax match metaPatternOperator +[*]+
 syntax match metaPatternOperator +[!]+
 syntax match metaPatternOperator +[.]+
 
-syntax match metaActionOperator +[>]+
-syntax match metaActionOperator +[<]+
 syntax match metaActionOperator +[~]+
 
 syntax match metaSeparatorOperator +[-][>]+
@@ -32,8 +28,9 @@ syntax match metaCommonOperator +[:]+
 
 syntax sync fromstart
 
-"hi def link metaKeyword           Keyword
+hi def link metaKeyword           Keyword
 hi def link metaString            String
+hi def link metaDef               Macro
 hi def link metaSeparatorOperator Todo
 hi def link metaChars             Underlined
 hi def link metaActionOperator    Macro
