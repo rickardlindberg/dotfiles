@@ -2,7 +2,16 @@
 
 sudo dnf upgrade
 
-sudo dnf install @multimedia @i3 vim gvim kdenlive supertuxkart ack python3-wxpython4
+sudo dnf install \
+    @multimedia \
+    @i3 \
+    vim \
+    gvim \
+    kdenlive \
+    supertuxkart \
+    ack \
+    python3-wxpython4 \
+    gitk
 
 # https://rpmfusion.org/Configuration
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
