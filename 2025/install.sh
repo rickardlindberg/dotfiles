@@ -4,6 +4,7 @@ set -e
 
 main() {
     mkdir -p ~/bin
+    mkdir -p ~/.config/git
     rm -rf ~/.vim
     mkdir -p ~/.vim/syntax
     mkdir -p ~/.vim/colors
@@ -12,6 +13,8 @@ main() {
     install_file vimrc                   ~/.vimrc                  "$@"
     install_file rlselect                ~/.rlselect.cfg           "$@"
     install_file i3                      ~/.config/i3/config       "$@"
+    install_file gitconfig               ~/.config/git/config      "$@"
+    install_file gitignore               ~/.config/git/ignore      "$@"
     install_bin  bin.t
     install_bin  bin.s
     install_bin  bin.rlselect
