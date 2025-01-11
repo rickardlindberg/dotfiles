@@ -16,6 +16,7 @@ dependencies() {
     echo gvim
     echo ack
     echo python3-wxpython4
+    echo python3-pygame
     echo meld
 
     echo @i3
