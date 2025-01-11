@@ -17,6 +17,7 @@ dependencies() {
     echo ack
     echo python3-wxpython4
     echo python3-pygame
+    echo python3-humblewx
     echo meld
 
     echo @i3
