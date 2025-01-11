@@ -1,4 +1,4 @@
-This repo contains my configuration files.
+This repo contains my configuration files and custom scripts.
 
 ## Manual configuration
 
