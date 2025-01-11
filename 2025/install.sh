@@ -25,10 +25,13 @@ main() {
     install_bin  bin.vim-find-select
     install_bin  bin.find-files
     install_bin  bin.find-dirs
+    install_bin  bin.command-server
+    install_bin  bin.extract-timelapses
 
     install_file i3                      ~/.config/i3/config       "$@"
     install_file xmodmap                 ~/.Xmodmap                "$@"
     install_bin  bin.my-i3-status
+    install_bin  bin.gotosleep
     run i3-msg restart
 }
 
