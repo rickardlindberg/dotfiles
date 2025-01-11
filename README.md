@@ -4,6 +4,9 @@ This repo contains my configuration files and custom scripts.
 
 - Firefox
     - about:config -> browser.backspace_action = 0
+    - about:profiles (https://support.mozilla.org/en-US/kb/back-and-restore-information-firefox-profiles)
+
+- SSH keys
 
 ## References
 
