@@ -7,6 +7,7 @@ sudo dnf upgrade
 dependencies() {
     echo @multimedia
     echo kdenlive
+    echo obs-studio
 
     echo git
     echo gitk
