@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import signal
 import subprocess
 import sys
 import zmq
@@ -38,7 +39,7 @@ def start_server(path, command):
     def run_command():
         try:
             subprocess.call(["tput", "reset"])
-            subprocess.call(command)
+            return subprocess.Popen(command)
         except:
             pass
     makedirs(get_ipc_dir(path))
@@ -48,16 +49,20 @@ def start_server(path, command):
     try:
         socket = context.socket(zmq.REP)
         socket.bind("ipc://{0}".format(get_ipc_path(path)))
-        run_command()
+        process = run_command()
         while True:
             args = socket.recv_json()
-            run_command()
+            if process and process.poll() is None:
+                process.send_signal(signal.SIGTERM)
+                process.wait()
+            process = run_command()
             socket.send_json({
                 "status": "ok",
             })
     except:
         pass
     context.destroy(linger=0)
+    os.remove(get_ipc_path(path))
 
 def get_ipc_path(path):
     return os.path.join(get_ipc_dir(path), ".ipc")
