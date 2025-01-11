@@ -8,11 +8,13 @@ dependencies() {
     echo @multimedia
     echo kdenlive
 
+    echo git
+    echo gitk
+    echo mercurial
     echo vim
     echo gvim
     echo ack
     echo python3-wxpython4
-    echo gitk
     echo meld
 
     echo @i3

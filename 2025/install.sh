@@ -15,6 +15,8 @@ main() {
     install_file rlselect                ~/.rlselect.cfg           "$@"
     install_file gitconfig               ~/.config/git/config      "$@"
     install_file gitignore               ~/.config/git/ignore      "$@"
+    install_file hgrc                    ~/.hgrc                   "$@"
+    install_file hgignore                ~/.hgignore               "$@"
     install_bin  bin.t
     install_bin  bin.s
     install_bin  bin.rlselect
