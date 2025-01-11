@@ -4,18 +4,25 @@ set -e
 
 sudo dnf upgrade
 
-sudo dnf install \
-    @multimedia \
-    @i3 \
-    vim \
-    gvim \
-    kdenlive \
-    supertuxkart \
-    ack \
-    python3-wxpython4 \
-    acpi \
-    fontawesome-fonts-all \
-    gitk
+dependencies() {
+    echo @multimedia
+    echo kdenlive
+
+    echo vim
+    echo gvim
+    echo ack
+    echo python3-wxpython4
+    echo gitk
+
+    echo @i3
+    echo fontawesome-fonts-all
+    echo acpi
+    echo arandr
+
+    echo supertuxkart
+}
+
+sudo dnf install $(dependencies)
 
 # https://rpmfusion.org/Configuration
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm

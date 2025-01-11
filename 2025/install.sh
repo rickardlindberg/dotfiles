@@ -22,8 +22,9 @@ main() {
     install_bin  bin.rlselect-remember
     install_bin  bin.vim-find-select
     install_bin  bin.find-files
+    install_bin  bin.find-dirs
     install_bin  bin.my-i3-status
-    #run i3-msg restart
+    run i3-msg restart
 }
 
 install_bin() {

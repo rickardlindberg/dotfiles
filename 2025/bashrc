@@ -32,3 +32,17 @@ rlselect-history() {
     fi
 }
 if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": rlselect-history'; fi
+
+rlselect-go() {
+    local selection
+    if [ "$1" = "" ]; then
+        selection="$(find-dirs ~ 3 | rlselect)"
+    else
+        selection="$(find-dirs "$1" | rlselect)"
+    fi
+    if [ $? = 0 ]; then
+        cd "$selection"
+    fi
+}
+
+alias g=rlselect-go
