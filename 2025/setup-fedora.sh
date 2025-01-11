@@ -13,6 +13,7 @@ dependencies() {
     echo ack
     echo python3-wxpython4
     echo gitk
+    echo meld
 
     echo @i3
     echo fontawesome-fonts-all
