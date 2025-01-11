@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
-import exifread
 import os
 import datetime
 import shutil
 import sys
 
 NUMBER_OF_PICTURES_CONSIDERED_A_SEQUENCE = 10
-MAX_SECONDS_DIFF = 5
+MAX_SECONDS_DIFF = 12
 
 def extract_picture_sequences(source_directory, target_base_directory):
+    print(f"Extracting from {source_directory} to {target_base_directory}")
     for index, picture_sequence in enumerate(find_picture_sequences(source_directory)):
         extract_picture_sequence(
             sequence=picture_sequence,
@@ -51,12 +51,13 @@ def find_jpeg_files(source_directory):
                 pictures.append({
                     "name": file,
                     "path": path,
-                    "timestamp": read_exif_timestamp(path),
+                    "timestamp": read_exif_timestamp_roger(path),
                 })
     pictures.sort(key=lambda picture: picture["timestamp"])
     return pictures
 
-def read_exif_timestamp(path):
+def read_exif_timestamp_exifread(path):
+    import exifread
     with open(path, "rb") as f:
         DATE_TAG = "Image DateTime"
         tags = exifread.process_file(f, stop_tag=DATE_TAG, details=False)
@@ -64,8 +65,130 @@ def read_exif_timestamp(path):
             date_tag = tags[DATE_TAG].values
             return datetime.datetime.strptime(date_tag, "%Y:%m:%d %H:%M:%S")
 
+def read_exif_timestamp_roger(path):
+    """
+    Extract data from a JPEG file that has en EXIF segment.
+
+    JPEG file format:
+        see https://www.media.mit.edu/pia/Research/deepview/exif.html
+
+        bytes
+        inx
+        0-1     Every JPEG file starts from binary value '0xFFD8'
+        2-3     Exif uses APP1(0xFFE1) Marker to avoid a conflict with JFIF format
+                Exif data structure...
+                    FFE1                APP1-marker
+        4-5         SSSS                APP1 data size
+        6-12        45786966 0000       Exif Header
+        13-21       49492A00 08000000   TIFF Header
+                    IFD0: Image File Directory (main image).
+                        * Directory. The last directory entry holds a link to ExifSubIFD
+                        * Link to IFD1 (thumbnail image)
+                        * Data area of IFDO
+                    ExifSubIFD
+                        * Directory.
+                        * Link to None 0x00
+                        * Data area of ExifSubIFD
+                    IFD1: Image File Directory (thumbnail image).
+                        * Directory.
+                        * Link to None 0x00
+                        * Data area of IFD1
+                    Thumbnail image
+
+        A directory starts with 2 bytes containing the number of entries in the directory.
+        Thereafter follows the directory entries.
+
+        A directory entry is 12 bytes long.
+
+        bytes
+        inx
+        0 - 1   Tag-id
+        2 - 3   Data type
+        4 - 7   Number of components
+        8 - 11  Data or a link to data. (If the lengt of data > 4 bytes, it's alink to where the data is stored.
+
+        Some data type contains more than 1 byte/component. Datatype rational has 8 bytes per component.
+
+    """
+
+    options = {'endian': 'little'}
+
+    def set_byte_order(bytes):
+        options['endian'] = {b'\x49\x49': 'little', b'\x4d\x4d': 'big'}[bytes[:2]]
+
+    def to_number(value):
+        return int.from_bytes(value, byteorder=options['endian'])
+
+    def get_original_date(path):
+        try:
+            with open(path, "rb") as f:
+                bytes = f.read()
+            return extract_original_date_from_jpeg_data(bytes)
+        except Exception as ex:
+            print(ex)
+
+    def extract_original_date_from_jpeg_data(bytes):
+        SOI = b'\xff\xd8'
+        EXIF = b'\xff\xe1'
+        soi, start = get_bytes(bytes, 0, 2)
+        if soi != SOI:
+            raise Exception("This is not a JPEG file!")
+        app1, start = get_bytes(bytes, start, 2)
+        if app1 != EXIF:
+            raise Exception("This JPEG file don't have an Exif segment!")
+        app1_data_size, start = get_bytes(bytes, start, 2)
+        app1_exif, start = get_bytes(bytes, start, 6)
+        ifd0_start = find_ifd0_start_in_tiff_header(bytes, start)
+        subifd_start = find_subifd_start_in_ifd0(bytes, ifd0_start)
+        return get_original_date_from_exif_subifd(bytes, subifd_start)
+
+    def find_ifd0_start_in_tiff_header(bytes, start):
+        tiff_header_start = start
+        tiff_endian_info, start = get_bytes(bytes, start, 2)
+        set_byte_order(tiff_endian_info)
+        tiff_tag_mark, start = get_bytes(bytes, start, 2)
+        tiff_first_ifd_offset = to_number(bytes[start: start + 4])
+        ifd0_start = tiff_header_start + tiff_first_ifd_offset
+        return ifd0_start
+
+    def find_subifd_start_in_ifd0(bytes, start):
+        """Last directory entry in IFD0 contains a link to the ExifSubIFD."""
+        T_OFFSET = 34665
+        nbr_of_dir_entries, start = to_number(bytes[start: start + 2]), start + 2
+        for i in range(nbr_of_dir_entries):
+            record, start = get_bytes(bytes, start, 12)
+            tag_nbr = to_number(record[: 2])
+            if tag_nbr == T_OFFSET:
+                return to_number(record[8: 12])
+        else:
+            raise Exception("No ExifSubIFD found")
+
+    def get_original_date_from_exif_subifd(bytes, start):
+        T_DATETIMEORIGINAL = 36867
+        nbr_of_dir_entries, start = to_number(bytes[start: start + 2]), start + 2
+        for i in range(nbr_of_dir_entries):
+            entry = bytes[start: start + 12]
+            tag_nbr = to_number(entry[0: 2])
+            if tag_nbr == T_DATETIMEORIGINAL:
+                return extract_original_date(bytes, entry)
+            start += 12
+        raise Exception("Original date not found in ExifSubIFD")
+
+    def extract_original_date(bytes, entry):
+        no_comps = to_number(entry[4: 8])
+        offset_or_value = to_number(entry[8: 12]) + 12
+        bytes = bytes[offset_or_value: offset_or_value + no_comps]
+        date_str = bytes.decode()[:-1]
+        return datetime.datetime.fromisoformat(date_str.replace(':', '-', 2))
+
+    def get_bytes(bytes, start, length):
+        end = start + length
+        return bytes[start: end], end
+
+    return get_original_date(path)
+
 if __name__ == "__main__":
     extract_picture_sequences(
-        source_directory="/var/run/media/rick/disk/DCIM",
+        source_directory=(sys.argv[2:3] or ["/var/run/media/rick/disk/DCIM"])[0],
         target_base_directory=sys.argv[1]
     )
