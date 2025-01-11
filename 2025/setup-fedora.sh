@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 sudo dnf upgrade
 
 sudo dnf install \
@@ -11,6 +13,8 @@ sudo dnf install \
     supertuxkart \
     ack \
     python3-wxpython4 \
+    acpi \
+    fontawesome-fonts-all \
     gitk
 
 # https://rpmfusion.org/Configuration

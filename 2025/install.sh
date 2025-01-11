@@ -18,8 +18,11 @@ main() {
     install_bin  bin.t
     install_bin  bin.s
     install_bin  bin.rlselect
+    install_bin  bin.rlselect-launch
+    install_bin  bin.rlselect-remember
     install_bin  bin.vim-find-select
     install_bin  bin.find-files
+    install_bin  bin.my-i3-status
     #run i3-msg restart
 }
 

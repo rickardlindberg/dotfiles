@@ -32,7 +32,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -102,8 +102,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym $mod+u exec "open-firefox-url"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -127,7 +125,7 @@ bindsym $mod+Shift+u exec xscreensaver-command --lock
 
 bar {
         # RL_DOTFILE_BAR_OUTPUT
-        status_command ~/.config/i3/myi3status
+        status_command ~/bin/my-i3-status
         font pango:monospace 11
         tray_padding 0
         colors {
