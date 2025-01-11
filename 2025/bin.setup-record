@@ -12,7 +12,7 @@ cleaup() {
         notify-send "Restoring Vim info"
         mv ~/.viminfo.screen_recording_bak ~/.viminfo
     fi
-    (cd ~/dotfiles/new && ./install.sh)
+    (cd ~/dotfiles && ./install.sh)
 }
 
 mv ~/.bash_history ~/.bash_history.screen_recording_bak
@@ -20,6 +20,6 @@ touch ~/.bash_history # TODO: make rlselect not choke on missing file
 echo "i3-msg border none; i3-msg resize set height 432; i3-msg resize set width 768" >> ~/.bash_history
 echo "firefox -P record2" >> ~/.bash_history
 mv ~/.viminfo ~/.viminfo.screen_recording_bak
-(cd ~/dotfiles/new && ./install.sh record)
+(cd ~/dotfiles && ./install.sh record)
 
 simplescreenrecorder
