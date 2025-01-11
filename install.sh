@@ -29,6 +29,7 @@ main() {
     install_bin  bin.command-server
     install_bin  bin.extract-timelapses
     install_bin  bin.setup-record
+    install_bin  bin.sync-folders
 
     install_file i3                      ~/.config/i3/config       "$@"
     install_file xmodmap                 ~/.Xmodmap                "$@"

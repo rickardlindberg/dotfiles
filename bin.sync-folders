@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import argparse
+import subprocess
+import sys
+
+def backup(options):
+    sys.exit(subprocess.call(build_rsync_command(options)))
+
+def build_rsync_command(options):
+    cmd = ["rsync"]
+    cmd.append("--archive")
+    cmd.append("--compress")
+    cmd.append("--safe-links")
+    cmd.append("--delete")
+    cmd.append("--delete-excluded")
+    cmd.append("--verbose")
+    for exclude in options.exclude:
+        cmd.append("--exclude")
+        cmd.append(exclude)
+    cmd.append(ensure_ends_with_slash(options.source))
+    cmd.append(ensure_has_no_slash_at_end(options.destination))
+    return cmd
+
+def ensure_ends_with_slash(path):
+    if path.endswith("/"):
+        return path
+    else:
+        return path + "/"
+
+def ensure_has_no_slash_at_end(path):
+    while path.endswith("/"):
+        path = path[:-1]
+    return path
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", required=True)
+    parser.add_argument("--destination", required=True)
+    parser.add_argument("--exclude", action="append", default=[])
+    options = parser.parse_args()
+    backup(options)
