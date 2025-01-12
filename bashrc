@@ -2,8 +2,8 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/projects/dotfiles/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/projects/dotfiles/bin:$PATH"
 fi
 export PATH
 

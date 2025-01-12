@@ -18,32 +18,10 @@ main() {
     install_file gitignore               ~/.config/git/ignore      "$@"
     install_file hgrc                    ~/.hgrc                   "$@"
     install_file hgignore                ~/.hgignore               "$@"
-    install_bin  bin.t
-    install_bin  bin.s
-    install_bin  bin.rlselect
-    install_bin  bin.rlselect-launch
-    install_bin  bin.rlselect-remember
-    install_bin  bin.vim-find-select
-    install_bin  bin.find-files
-    install_bin  bin.find-dirs
-    install_bin  bin.command-server
-    install_bin  bin.extract-timelapses
-    install_bin  bin.setup-record
-    install_bin  bin.sync-folders
 
     install_file i3                      ~/.config/i3/config       "$@"
     install_file xmodmap                 ~/.Xmodmap                "$@"
-    install_bin  bin.my-i3-status
-    install_bin  bin.gotosleep
     run i3-msg restart
-}
-
-install_bin() {
-    name="$1"
-    destination=~/bin/$(echo "$name" | sed 's/^bin.//')
-    shift
-    install_file "$name" "$destination" "$@"
-    run chmod +x "$destination"
 }
 
 install_file() {

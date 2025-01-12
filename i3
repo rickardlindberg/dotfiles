@@ -68,7 +68,7 @@ bindsym $mod+Shift+u exec i3lock
 
 bar {
     # RL_DOTFILE_BAR_OUTPUT
-    status_command ~/bin/my-i3-status
+    status_command my-i3-status
     font pango:monospace 11
     tray_padding 0
     colors {
