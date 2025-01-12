@@ -31,7 +31,13 @@ rlselect-history() {
         READLINE_POINT=${#READLINE_LINE}
     fi
 }
-if [[ $- =~ .*i.* ]]; then bind -x '"\C-r": rlselect-history'; fi
+if [[ $- =~ .*i.* ]]; then
+    bind -x '"\C-r": rlselect-history'
+    bind -x '"\C-n": rlselect-history'
+    bind -x '"\C-p": rlselect-history'
+    bind -x '"\e[A": rlselect-history' # up-arrow
+    bind -x '"\e[B": rlselect-history' # down-arrow
+fi
 
 rlselect-go() {
     local selection
