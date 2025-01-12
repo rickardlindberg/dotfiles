@@ -25,18 +25,26 @@ rlselect-history() {
     if [ "$action" = "tab" ]; then
         READLINE_LINE="${selection}"
         READLINE_POINT=${#READLINE_LINE}
+        bind '"\C-x2":' # Bind Ctrl+x+2 to do nothing
     elif [ "$action" = "enter" ]; then
-        # TODO: how to execute this command?
         READLINE_LINE="${selection}"
         READLINE_POINT=${#READLINE_LINE}
+        bind '"\C-x2": accept-line' # Bind Ctrl+x+2 to accept line
+    else
+        bind '"\C-x2":' # Bind Ctrl+x+2 to do nothing
     fi
 }
 if [[ $- =~ .*i.* ]]; then
-    bind -x '"\C-r": rlselect-history'
-    bind -x '"\C-n": rlselect-history'
-    bind -x '"\C-p": rlselect-history'
-    bind -x '"\e[A": rlselect-history' # up-arrow
-    bind -x '"\e[B": rlselect-history' # down-arrow
+    # Bind history commands to Ctrl+x+1 followed by Ctrl+x+2:
+    bind '"\C-r": "\C-x1\C-x2"'
+    bind '"\C-n": "\C-x1\C-x2"'
+    bind '"\C-p": "\C-x1\C-x2"'
+    bind '"\e[A": "\C-x1\C-x2"' # up-arrow
+    bind '"\e[B": "\C-x1\C-x2"' # down-arrow
+    # Bind Ctrl+x+1 to execute rlselect-history which does two things:
+    # 1. Sets READLINE_*
+    # 2. Binds Ctrl+x+2 to either accept line or do nothing.
+    bind -x '"\C-x1": rlselect-history'
 fi
 
 rlselect-go() {
