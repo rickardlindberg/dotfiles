@@ -19,6 +19,7 @@ dependencies() {
     echo python3-pygame
     echo python3-humblewx
     echo meld
+    echo spectacle
 
     echo @i3
     echo fontawesome-fonts-all
