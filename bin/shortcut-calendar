@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec ~/projects/timeline/main-sf/source/timeline.py ~/documents/calendar.timeline
