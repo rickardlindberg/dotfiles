@@ -8,6 +8,7 @@ dependencies() {
     echo @multimedia
     echo kdenlive
     echo obs-studio
+    echo audacity
 
     echo git
     echo gitk
