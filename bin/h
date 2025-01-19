@@ -2,4 +2,8 @@
 
 set -e
 
-exec gitk
+if [ -d .hg ]; then
+    exec hg log --follow
+else
+    exec gitk
+fi
