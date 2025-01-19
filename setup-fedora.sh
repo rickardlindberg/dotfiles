@@ -16,11 +16,14 @@ dependencies() {
     echo vim
     echo gvim
     echo ack
-    echo python3-wxpython4
     echo python3-pygame
-    echo python3-humblewx
     echo meld
     echo spectacle
+    # Timeline
+    echo python3-wxpython4
+    echo python3-humblewx
+    echo python3-icalendar
+    echo python3-markdown
 
     echo @i3
     echo fontawesome-fonts-all
