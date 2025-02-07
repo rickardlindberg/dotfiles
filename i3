@@ -92,7 +92,14 @@ for_window [class="Rlselect"] floating toggle
 for_window [class="Meld"] fullscreen enable
 for_window [class="Timeline.py"] floating enable
 
-workspace 1 output HDMI-1
-workspace 2 output HDMI-1
-workspace 3 output HDMI-1
-workspace 4 output HDMI-1
+workspace 5 output eDP-1
+
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output DP-1
+
+workspace 6 output HDMI-1
+workspace 7 output HDMI-1
+workspace 8 output HDMI-1
+workspace 9 output HDMI-1
