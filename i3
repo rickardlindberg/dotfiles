@@ -71,6 +71,7 @@ bar {
     status_command my-i3-status
     font pango:monospace 11
     tray_padding 0
+    tray_output primary
     colors {
         background #002b36
     }
